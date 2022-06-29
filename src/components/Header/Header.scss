@@ -1,0 +1,11 @@
+.header {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+
+    &__logo {
+        width: 7.5rem;
+        height: 1.5625rem;
+        margin: 0 auto;
+    }
+}

@@ -1,0 +1,15 @@
+@use './colors';
+@use './screens';
+
+
+@mixin tablet {
+    @media (min-width: screens.$tablet-breakpoint) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: screens.$desktop-breakpoint) {
+        @content;
+    }
+}
