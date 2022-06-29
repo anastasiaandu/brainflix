@@ -34,10 +34,9 @@
         border-radius: 50%;
         margin-left: 1rem;
 
-        // @include mixins.tablet {
-        //     width: 3rem;
-        //     height: 3rem;
-        // }
+        @include mixins.tablet {
+            display: none;
+        }
 
         // &-missing {
         //     width: 2.75rem;
