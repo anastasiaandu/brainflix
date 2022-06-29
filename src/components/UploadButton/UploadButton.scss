@@ -2,15 +2,6 @@
 @use '../../styles/partials/mixins';
 
 .upload {
-    text-transform: uppercase;
-    border: none;
-    border-radius: 4px;
-    background-color: colors.$brainflix-blue;
-    color: colors.$white;
-    padding: 1rem 0;
-    font-size: 1rem;
-    font-weight: 700;
+    @include mixins.button;
     background-image: url('../../assets/images/upload.svg');
-    background-repeat: no-repeat;
-    background-position: 5% center;
 }

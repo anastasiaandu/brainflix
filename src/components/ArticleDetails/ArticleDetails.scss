@@ -1,0 +1,46 @@
+@use '../../styles/partials/colors';
+
+.article {
+    &__video-details {
+        display: flex;
+        margin: 0 1rem 1rem 1rem;
+        border-bottom: 1px solid colors.$mercury;
+    
+        &--left {
+            width: 50%;
+        }
+    
+        &--right {
+            width: 50%;
+        }
+    }
+    
+    &__video-channel {
+        font-weight: 700;
+    }
+    
+    &__video-date {
+        color: colors.$silver;
+    }
+    
+    &__video-views {
+        display: flex;
+    }
+    
+    &__views-text {
+        color: colors.$silver;
+    }
+    
+    &__video-likes {
+        display: flex;
+        margin-top: -1rem;
+    }
+    
+    &__likes-text {
+        color: colors.$silver;
+    }
+    
+    &__video-icon {
+        margin-right: 0.5rem;
+    }
+}

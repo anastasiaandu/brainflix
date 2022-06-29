@@ -1,0 +1,10 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
+.article {
+    &__video-title {
+        @include mixins.mobile-heading;
+        @include mixins.mobile-boxing;
+        border-bottom: 1px solid colors.$mercury;
+    }
+}
