@@ -26,7 +26,7 @@ const ArticleDetails = () => {
         return `${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
     }
 
-    const videoDate = formatDate(articleDetails[0].timestamp);
+    const date = formatDate(articleDetails[0].timestamp);
 
     return (
         <div className='article__video-details'>
@@ -35,7 +35,7 @@ const ArticleDetails = () => {
                     By {article[0].channel}
                 </p>
                 <p className='article__video-date'>
-                    {videoDate}
+                    {date}
                 </p>
             </div>
             <div className='article__video-details--right'> 
