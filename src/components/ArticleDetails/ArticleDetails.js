@@ -1,10 +1,8 @@
 import './ArticleDetails.scss';
-import article from '../../data/videos.json';
-import articleDetails from '../../data/video-details.json';
 import viewsIcon from '../../assets/images/views.svg';
 import likesIcon from '../../assets/images/likes.svg';
 
-const ArticleDetails = () => {
+const ArticleDetails = (props) => {
 
     //declare function to format date to dynamic date
     const intervals = [
@@ -26,13 +24,33 @@ const ArticleDetails = () => {
         return `${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
     }
 
-    const videoDate = formatDate(articleDetails[0].timestamp);
+
+    // const videoDate = props.videoDetails.map((video) => {
+    //     return formatDate(video.timestamp)
+    // });
+
+    const videoDate = formatDate(props.videoDetails[0].timestamp);
+
+
+    // const videoChannel = props.videoDetails.map((video) => {
+    //     return video.channel
+    // });
+
+    // const videoViews = props.videoDetails.map((video) => {
+    //     return video.views
+    // });
+
+    // const videoLikes = props.videoDetails.map((video) => {
+    //     return video.likes
+    // });
+
 
     return (
         <div className='article__video-details'>
             <div className='article__video-details--left'>
                 <p className='article__video-channel'>
-                    By {article[0].channel}
+                    {/* By {videoChannel} */}
+                    By {props.videoDetails[0].channel}
                 </p>
                 <p className='article__video-date'>
                     {videoDate}
@@ -42,13 +60,15 @@ const ArticleDetails = () => {
                 <div className='article__video-views'>
                     <img src={viewsIcon} alt='views icon' className='article__video-icon' />
                     <p className='article__views-text'>
-                        {articleDetails[0].views}
+                        {/* {videoViews} */}
+                        {props.videoDetails[0].views}
                     </p>
                 </div>
                 <div className='article__video-likes'>
                     <img src={likesIcon} alt='likes icon' className='article__video-icon' />
                     <p className='article__likes-text'>
-                        {articleDetails[0].likes}
+                        {/* {videoLikes} */}
+                        {props.videoDetails[0].likes}
                     </p>
                 </div>
             </div>

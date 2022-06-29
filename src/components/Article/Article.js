@@ -1,16 +1,20 @@
 import './Article.scss';
 import ArticleHeading from "../ArticleHeading/ArticleHeading";
 import ArticleDetails from '../ArticleDetails/ArticleDetails';
-import articleDetails from '../../data/video-details.json';
 
-const Article = () => {
+const Article = (props) => {
     return (
         <section className='article'>
-            <ArticleHeading />
-            <ArticleDetails />
+            <ArticleHeading videoDetails={props.videoDetails}/>
+            <ArticleDetails videoDetails={props.videoDetails}/>
             <div className='article__video-description'>
+                {/* {
+                    props.videoDetails.map((video) => {
+                        return <p key={video.id}>{video.description}</p>
+                    })
+                } */}
                 <p>
-                    {articleDetails[0].description}
+                    {props.videoDetails[0].description}
                 </p>
             </div>
         </section>
