@@ -4,13 +4,13 @@ import videoDetails from '../../data/video-details.json';
 import Hero from "../Hero/Hero";
 import Article from "../Article/Article";
 import Comments from "../Comments/Comments";
-import Videos from "../Videos/Videos";
+import VideosList from "../VideosList/VideosList";
 
 
 class Main extends Component {
 
     state = {
-              activeVideo: null,
+              activeVideo: videoDetails[0],
               videos: videos,
               videoDetails: videoDetails
             }
@@ -24,16 +24,18 @@ class Main extends Component {
     }
 
     render() {
-        // const filteredVideos = this.state.videos.filter((video) => {
-        //     return video.id === this.state.activeVideo.id
-        // })
+        const unselectedVideos = this.state.videos.filter((video) => {
+            return video.id !== this.state.activeVideo.id
+        })
+        const selectedVideo = this.state.activeVideo;
+
         return (
             <main>
-                <Hero videos={this.state.videos}/>
-                <Article videoDetails={this.state.videoDetails}/>
-                <Comments videoDetails={this.state.videoDetails}/>
-                <Videos videoDetails={this.state.videoDetails} 
-                        onVideoChange={this.changeActiveVideo}
+                <Hero video={selectedVideo}/>
+                <Article videoDetail={selectedVideo}/>
+                <Comments videoDetail={selectedVideo}/>
+                <VideosList videoDetails={unselectedVideos} 
+                            onVideoChange={this.changeActiveVideo}
                 />
             </main>
         );

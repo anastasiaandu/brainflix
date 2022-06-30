@@ -2,7 +2,7 @@ import './ArticleDetails.scss';
 import viewsIcon from '../../assets/images/views.svg';
 import likesIcon from '../../assets/images/likes.svg';
 
-const ArticleDetails = (props) => {
+const ArticleDetails = ({ videoDetail }) => {
 
     //declare function to format date to dynamic date
     const intervals = [
@@ -29,7 +29,7 @@ const ArticleDetails = (props) => {
     //     return formatDate(video.timestamp)
     // });
 
-    const videoDate = formatDate(props.videoDetails[0].timestamp);
+    const videoDate = formatDate(videoDetail.timestamp);
 
 
     // const videoChannel = props.videoDetails.map((video) => {
@@ -50,7 +50,7 @@ const ArticleDetails = (props) => {
             <div className='article__video-details--left'>
                 <p className='article__video-channel'>
                     {/* By {videoChannel} */}
-                    By {props.videoDetails[0].channel}
+                    By {videoDetail.channel}
                 </p>
                 <p className='article__video-date'>
                     {videoDate}
@@ -61,14 +61,14 @@ const ArticleDetails = (props) => {
                     <img src={viewsIcon} alt='views icon' className='article__video-icon' />
                     <p className='article__views-text'>
                         {/* {videoViews} */}
-                        {props.videoDetails[0].views}
+                        {videoDetail.views}
                     </p>
                 </div>
                 <div className='article__video-likes'>
                     <img src={likesIcon} alt='likes icon' className='article__video-icon' />
                     <p className='article__likes-text'>
                         {/* {videoLikes} */}
-                        {props.videoDetails[0].likes}
+                        {videoDetail.likes}
                     </p>
                 </div>
             </div>

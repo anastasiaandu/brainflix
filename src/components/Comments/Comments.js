@@ -2,16 +2,16 @@ import './Comments.scss';
 import profilePicture from '../../assets/images/Mohan-muruge.jpg';
 
 
-const Comments = (props) => {
+const Comments = ({ videoDetail }) => {
     return (
         <section className='comments'>
             {/* {
-                props.videoDetails.map((video) => {
+                videoDetails.map((video) => {
                     return <p key={video.id} className='comments__total'>{video.comments.length} Comments</p>
                 })
             } */}
             <p className='comments__total'>
-                {props.videoDetails[0].comments.length} Comments
+                {videoDetail.comments.length} Comments
             </p>
             <div className='comments__section'>
                 <img src={profilePicture} alt='user avatar' className='comments__avatar'/>

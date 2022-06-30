@@ -1,6 +1,6 @@
 import './ArticleHeading.scss';
 
-const ArticleHeading = (props) => {
+const ArticleHeading = ({ videoDetail }) => {
     return (
         <div className='article'>
             {/* {
@@ -9,7 +9,7 @@ const ArticleHeading = (props) => {
                 })
             } */}
             <h1 className='article__video-title'>
-                {props.videoDetails[0].title}
+                {videoDetail.title}
             </h1>
         </div>
     );
