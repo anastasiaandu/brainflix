@@ -3,7 +3,7 @@ import videos from '../../data/videos.json';
 import videoDetails from '../../data/video-details.json';
 import Hero from "../Hero/Hero";
 import Article from "../Article/Article";
-import Comments from "../Comments/Comments";
+import CommentsList from "../CommentsList/CommentsList";
 import VideosList from "../VideosList/VideosList";
 
 
@@ -33,7 +33,7 @@ class Main extends Component {
             <main>
                 <Hero video={selectedVideo}/>
                 <Article videoDetail={selectedVideo}/>
-                <Comments videoDetail={selectedVideo}/>
+                <CommentsList videoDetail={selectedVideo}/>
                 <VideosList videoDetails={unselectedVideos} 
                             onVideoChange={this.changeActiveVideo}
                 />

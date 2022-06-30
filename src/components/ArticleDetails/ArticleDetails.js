@@ -3,6 +3,7 @@ import viewsIcon from '../../assets/images/views.svg';
 import likesIcon from '../../assets/images/likes.svg';
 
 const ArticleDetails = ({ videoDetail }) => {
+    
 
     //declare function to format date to dynamic date
     const intervals = [
@@ -24,32 +25,13 @@ const ArticleDetails = ({ videoDetail }) => {
         return `${count} ${interval.label}${count !== 1 ? 's' : ''} ago`;
     }
 
-
-    // const videoDate = props.videoDetails.map((video) => {
-    //     return formatDate(video.timestamp)
-    // });
-
     const videoDate = formatDate(videoDetail.timestamp);
-
-
-    // const videoChannel = props.videoDetails.map((video) => {
-    //     return video.channel
-    // });
-
-    // const videoViews = props.videoDetails.map((video) => {
-    //     return video.views
-    // });
-
-    // const videoLikes = props.videoDetails.map((video) => {
-    //     return video.likes
-    // });
 
 
     return (
         <div className='article__video-details'>
             <div className='article__video-details--left'>
                 <p className='article__video-channel'>
-                    {/* By {videoChannel} */}
                     By {videoDetail.channel}
                 </p>
                 <p className='article__video-date'>
@@ -60,14 +42,12 @@ const ArticleDetails = ({ videoDetail }) => {
                 <div className='article__video-views'>
                     <img src={viewsIcon} alt='views icon' className='article__video-icon' />
                     <p className='article__views-text'>
-                        {/* {videoViews} */}
                         {videoDetail.views}
                     </p>
                 </div>
                 <div className='article__video-likes'>
                     <img src={likesIcon} alt='likes icon' className='article__video-icon' />
                     <p className='article__likes-text'>
-                        {/* {videoLikes} */}
                         {videoDetail.likes}
                     </p>
                 </div>

@@ -8,11 +8,6 @@ const Article = ({ videoDetail }) => {
             <ArticleHeading videoDetail={videoDetail}/>
             <ArticleDetails videoDetail={videoDetail}/>
             <div className='article__video-description'>
-                {/* {
-                    videoDetails.map((video) => {
-                        return <p key={video.id}>{video.description}</p>
-                    })
-                } */}
                 <p>
                     {videoDetail.description}
                 </p>

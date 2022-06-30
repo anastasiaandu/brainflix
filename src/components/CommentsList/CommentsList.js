@@ -1,15 +1,11 @@
-import './Comments.scss';
+import './CommentsList.scss';
 import profilePicture from '../../assets/images/Mohan-muruge.jpg';
+import Comment from '../Comment/Comment';
 
 
 const Comments = ({ videoDetail }) => {
     return (
         <section className='comments'>
-            {/* {
-                videoDetails.map((video) => {
-                    return <p key={video.id} className='comments__total'>{video.comments.length} Comments</p>
-                })
-            } */}
             <p className='comments__total'>
                 {videoDetail.comments.length} Comments
             </p>
@@ -21,7 +17,7 @@ const Comments = ({ videoDetail }) => {
                     </p>
                     <form className='comments__form'>
                         <label htmlFor="user-comment" className="comments__label"></label>
-                        <input type="text" placeholder="Add a new comment" id="user-comment" className="comments__input" name="comment" />
+                        <textarea type="text" placeholder="Add a new comment" id="user-comment" className="comments__input" name="comment" />
                         <span className="comments__validation"></span>
     
                         <button type="submit" className="comments__button">Comment</button>
@@ -29,7 +25,11 @@ const Comments = ({ videoDetail }) => {
                 </div>
             </div>
             <div className='comments__old'>
-                
+                {
+                    videoDetail.comments.map((comment) => {
+                        return <Comment name={comment.name} comment={comment.comment} date={comment.timestamp} /> 
+                    })
+                }
             </div>
         </section>
     );
