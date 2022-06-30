@@ -10,6 +10,7 @@
 
     &__section {
         display: flex;
+        border-bottom: 1px solid colors.$mercury;
     }
 
     &__avatar {
@@ -23,6 +24,7 @@
 
     &__new {
         width: 100%;
+        padding-bottom: 1rem;
     }
 
     &__heading {

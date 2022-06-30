@@ -1,3 +1,4 @@
+import uniqid from 'uniqid';
 import './CommentsList.scss';
 import profilePicture from '../../assets/images/Mohan-muruge.jpg';
 import Comment from '../Comment/Comment';
@@ -24,13 +25,11 @@ const Comments = ({ videoDetail }) => {
                     </form>
                 </div>
             </div>
-            <div className='comments__old'>
-                {
-                    videoDetail.comments.map((comment) => {
-                        return <Comment name={comment.name} comment={comment.comment} date={comment.timestamp} /> 
-                    })
-                }
-            </div>
+            {
+                videoDetail.comments.map((comment) => {
+                    return <Comment key={uniqid()} name={comment.name} comment={comment.comment} timestamp={comment.timestamp} image={'https://picsum.photos/200/300'} /> 
+                })
+            }
         </section>
     );
 };

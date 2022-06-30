@@ -11,6 +11,7 @@ const VideosList = ({ videoDetails, onVideoChange }) => {
                 {
                     videoDetails.map((video) => {
                         return <Video 
+                                    key={video.id}
                                     title={video.title}
                                     channel={video.channel}
                                     image={video.image}
