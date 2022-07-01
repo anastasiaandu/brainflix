@@ -13,6 +13,10 @@
         align-items: center;
     }
 
+    @include mixins.desktop {
+        padding: 1rem 8rem;
+    }
+
     &__logo {
         height: 1.45rem;
         margin: 0 auto;
