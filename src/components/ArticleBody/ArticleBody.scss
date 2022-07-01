@@ -1,0 +1,14 @@
+@use '../../styles/partials/mixins';
+
+
+.article {
+    &__video-description {
+        font-size: 0.8rem;
+        margin: 1rem 0;
+
+        @include mixins.tablet {
+            font-size: 0.9rem;
+            margin-top: 2.25rem;
+        }
+    }
+}

@@ -7,8 +7,10 @@ const Header = () => {
     return (
         <header className='header'>
             <img src={logoImage} alt="brainflix logo" className='header__logo' />
-            <SearchForm />
-            <UploadButton />
+            <nav className='header__nav'>
+                <SearchForm />
+                <UploadButton />
+            </nav>
         </header>
     );
 };

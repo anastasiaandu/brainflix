@@ -1,8 +1,15 @@
 @use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
 
 
 .hero {
+    background-color: colors.$brainflix-darkblack;
+
     &__video {
         width: 100%;
+        
+        @include mixins.tablet {
+            margin: 0 2.25rem;
+        }
     }
 }

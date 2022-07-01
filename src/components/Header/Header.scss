@@ -4,22 +4,33 @@
 .header {
     padding: 1rem;
     display: flex;
+    justify-content: space-between;
     flex-direction: column;
 
     @include mixins.tablet {
+        padding: 1rem 2.25rem;
         flex-direction: row;
         align-items: center;
     }
 
     &__logo {
-        width: 7.5rem;
-        height: 1.5625rem;
+        height: 1.45rem;
         margin: 0 auto;
 
         @include mixins.tablet {
-            width: 33%;
             margin: 0;
+            margin-right: 7rem;
         }
     }
-    
+
+    &__nav {
+        display: flex;
+        flex-direction: column;
+
+        @include mixins.tablet {
+            flex-direction: row;
+            justify-content: space-between;
+            align-items: center;
+        }
+    }
 }

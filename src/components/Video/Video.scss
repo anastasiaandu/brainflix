@@ -1,22 +1,40 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
+
 .videos {
     &__next {
-        width: 100%;
         display: flex;
         margin: 1rem 0;
+
+        @include mixins.tablet {
+            width: 45%;
+        }
     }
 
     &__thumbnail {
-        // width: 30%;
-        height: 5rem;
+        min-width: 6.5rem;
+        max-height: 3.5rem;
         border-radius: 4px;
-        object-fit: contain;
+        object-fit: cover;
         margin-right: 1rem;
+        background-color: colors.$mercury;
+
+        @include mixins.tablet {
+            min-width: 7rem;
+            max-height: 4rem;
+        }
     }
 
     &__info {
         display: flex;
         flex-direction: column;
         justify-content: space-between;
+        font-size: 0.8rem;
+
+        @include mixins.tablet {
+            font-size: 0.9rem;
+        }
     }
 
     &__title {

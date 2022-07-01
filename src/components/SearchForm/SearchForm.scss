@@ -14,24 +14,29 @@
 
     &__input{
         width: 100%;
-        padding: 0.5rem 0.5rem 0.5rem 2rem;
+        padding: 0.5rem 0.5rem 0.5rem 2.25rem;
         border: 1px solid colors.$mercury;
         border-radius: 4px;
         background-color: colors.$alabaster;
         background-image: url('../../assets/images/search.svg');
         background-repeat: no-repeat;
         background-position: 5% center;
+        background-size: 1.2rem;
 
         &::placeholder {
             color: colors.$brainflix-darkblack;
+            font-family: 'Avenir Next';
+            font-size: 0.8rem;
+        }
+
+        @include mixins.tablet {
+            height: 2.5rem;
+            margin-right: 3rem;
         }
     }
 
     &__avatar {
-        width: 2.25rem;
-        height: 2.25rem;
-        object-fit: cover;
-        border-radius: 50%;
+        @include mixins.avatar;
         margin-left: 1rem;
 
         @include mixins.tablet {

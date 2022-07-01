@@ -1,18 +1,28 @@
 @use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
 
 .videos {
     margin: 0 1rem 1rem 1rem;
 
+    @include mixins.tablet {
+        margin: 0 2.25rem 2.25rem 2.25rem;
+    }
+
     &__heading {
         text-transform: uppercase;
-        font-size: 1rem;
+        font-size: 0.75rem;
         font-weight: 700;
         color: colors.$silver;
+        margin: 1rem 0;
+
+        @include mixins.tablet {
+            margin: 2rem 0;
+        }
     }
 
     &__all {
         margin: 0;
         padding: 0;
-        list-style-type: none;
     }
 }

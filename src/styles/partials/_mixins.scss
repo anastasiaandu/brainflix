@@ -4,13 +4,12 @@
 
 @mixin mobile-heading {
     font-size: 1.5rem;
-    line-height: 2rem;
     font-weight: 700;
 }
 
-@mixin mobile-boxing {
-    margin: 1rem 1rem 0 1rem;
-    padding-bottom: 1rem;
+@mixin tablet-heading {
+    font-size: 2rem;
+    font-weight: 700;
 }
 
 @mixin input {
@@ -19,8 +18,8 @@
     border: 1px solid colors.$mercury;
     border-radius: 4px;
     background-color: colors.$alabaster;
-    padding: 0.625rem 0.625rem 4rem 0.625rem;
     margin-bottom: 1rem;
+    resize: none;
 }
 
 @mixin button {
@@ -29,11 +28,20 @@
     border-radius: 4px;
     background-color: colors.$brainflix-blue;
     color: colors.$white;
-    padding: 1rem 0;
-    font-size: 1rem;
+    padding: 0.75rem 0;
+    font-size: 0.75rem;
     font-weight: 700;
     background-repeat: no-repeat;
     background-position: 5% center;
+    background-size: 1.35rem;
+}
+
+@mixin avatar{
+    width: 2.25rem;
+    height: 2.25rem;
+    object-fit: cover;
+    border-radius: 50%;
+    background-color: colors.$mercury;
 }
 
 @mixin tablet {

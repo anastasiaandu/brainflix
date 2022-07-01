@@ -1,17 +1,14 @@
 import './Article.scss';
 import ArticleHeading from "../ArticleHeading/ArticleHeading";
 import ArticleDetails from '../ArticleDetails/ArticleDetails';
+import ArticleBody from '../ArticleBody/ArticleBody';
 
 const Article = ({ videoDetail }) => {
     return (
         <section className='article'>
-            <ArticleHeading videoDetail={videoDetail}/>
-            <ArticleDetails videoDetail={videoDetail}/>
-            <div className='article__video-description'>
-                <p>
-                    {videoDetail.description}
-                </p>
-            </div>
+            <ArticleHeading videoDetail={videoDetail} />
+            <ArticleDetails videoDetail={videoDetail} />
+            <ArticleBody videoDetail={videoDetail} />
         </section>
     );
 };

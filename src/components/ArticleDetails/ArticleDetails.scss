@@ -1,22 +1,40 @@
 @use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
 
 .article {
     &__video-details {
         display: flex;
-        margin: 0 1rem 1rem 1rem;
+        justify-content: space-between;
+        padding: 0.5rem 0;
         border-bottom: 1px solid colors.$mercury;
+        font-size: 0.8rem;
+
+        @include mixins.tablet {
+            padding: 0;
+        }
     
         &--left {
-            width: 50%;
+            @include mixins.tablet {
+                display: flex;
+            }
         }
     
         &--right {
-            width: 50%;
+            margin-right: 3rem;
+
+            @include mixins.tablet {
+                display: flex;
+            }
         }
     }
     
     &__video-channel {
         font-weight: 700;
+
+        @include mixins.tablet {
+            margin-right: 2.25rem;
+        }
     }
     
     &__video-date {
@@ -25,6 +43,10 @@
     
     &__video-views {
         display: flex;
+
+        @include mixins.tablet {
+            margin-right: 2.25rem;
+        }
     }
     
     &__views-text {
@@ -33,7 +55,11 @@
     
     &__video-likes {
         display: flex;
-        margin-top: -1rem;
+        margin-top: -0.75rem;
+
+        @include mixins.tablet {
+            margin-top: 0;
+        }
     }
     
     &__likes-text {

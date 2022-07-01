@@ -6,7 +6,9 @@
     background-image: url('../../assets/images/upload.svg');
 
     @include mixins.tablet {
-        width: 10rem;
+        width: 11rem;
+        height: 2.5rem;
+        margin-left: 1.5rem;
     }
 
     &__avatar {
@@ -14,8 +16,8 @@
 
         @include mixins.tablet {
             display: flex;
-            width: 3rem;
-            height: 3rem;
+            width: 2.75rem;
+            height: 2.75rem;
             object-fit: cover;
             border-radius: 50%;
             margin-left: 1rem;

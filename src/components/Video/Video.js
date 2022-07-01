@@ -1,7 +1,13 @@
 import './Video.scss';
 
 
-const Video = ({ title, channel, image, id, onVideoChange }) => {
+const Video = ({ 
+    title, 
+    channel, 
+    image, 
+    id, 
+    onVideoChange 
+}) => {
 
     const clickHandler = (event) => {
         event.preventDefault();

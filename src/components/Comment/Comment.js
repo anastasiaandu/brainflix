@@ -1,6 +1,6 @@
 import './Comment.scss';
 
-const Comment = ({ name, comment, timestamp, image }) => {
+const Comment = ({ name, comment, timestamp }) => {
 
 
     //declare function to format date to dynamic date
@@ -27,7 +27,7 @@ const Comment = ({ name, comment, timestamp, image }) => {
 
     return (
         <div className='comments__old'>
-            <img src={image} alt='user avatar' className='comments__avatar'/>
+            <img src='' alt='' className='comments__avatar-new'/>
             <div>
                 <div className='comments__container'>
                     <p className='comments__name'>

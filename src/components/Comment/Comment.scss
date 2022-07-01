@@ -7,22 +7,25 @@
         border-bottom: 1px solid colors.$mercury;
         font-size: 0.8rem;
         padding: 1rem 0;
+
+        @include mixins.tablet {
+            padding: 2rem 0;
+            font-size: 0.9rem;
+        }
     }
 
-    &__avatar {
-        width: 2.25rem;
+    &__avatar-new {
+        min-width: 2.25rem;
         height: 2.25rem;
         object-fit: cover;
         border-radius: 50%;
+        background-color: colors.$mercury;
         margin-right: 1rem;
 
-        &--missing {
-            background-color: colors.$mercury;
-
-            @include mixins.tablet {
-                width: 3.2rem;
-                height: 3rem;
-            }
+        @include mixins.tablet {
+            min-width: 2.75rem;
+            height: 2.75rem;
+            margin-right: 1.5rem;
         }
     }
 
