@@ -5,11 +5,21 @@
 .hero {
     background-color: colors.$brainflix-darkblack;
 
+    @include mixins.tablet {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    
     &__video {
         width: 100%;
         
         @include mixins.tablet {
-            margin: 0 2.25rem;
+            width: 90%;
+        }
+
+        @include mixins.desktop {
+            width: 65%;
         }
     }
 }
