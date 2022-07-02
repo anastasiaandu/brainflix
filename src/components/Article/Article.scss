@@ -6,4 +6,9 @@
     @include mixins.tablet {
         margin: 0 2.25rem 2.25rem 2.25rem;
     }
+
+    @include mixins.desktop {
+        margin: 0 0 1rem 8rem;
+        // padding-right: 1.5rem;
+    }
 }

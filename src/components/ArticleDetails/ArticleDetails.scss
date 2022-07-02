@@ -13,6 +13,10 @@
         @include mixins.tablet {
             padding: 0;
         }
+
+        @include mixins.desktop {
+            padding-right: 1.5rem;
+        }
     
         &--left {
             @include mixins.tablet {
@@ -25,6 +29,7 @@
 
             @include mixins.tablet {
                 display: flex;
+                margin: 0;
             }
         }
     }
@@ -33,7 +38,7 @@
         font-weight: 700;
 
         @include mixins.tablet {
-            margin-right: 2.25rem;
+            margin-right: 2rem;
         }
     }
     
@@ -45,7 +50,7 @@
         display: flex;
 
         @include mixins.tablet {
-            margin-right: 2.25rem;
+            margin-right: 2rem;
         }
     }
     

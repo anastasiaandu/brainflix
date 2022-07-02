@@ -8,7 +8,11 @@
 
         @include mixins.tablet {
             font-size: 0.9rem;
-            margin-top: 2.25rem;
+            margin-top: 1.5rem;
+        }
+
+        @include mixins.tablet {
+            padding-right: 1.5rem;
         }
     }
 }

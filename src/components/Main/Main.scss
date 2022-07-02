@@ -1,0 +1,25 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
+
+.body  {
+    @include mixins.desktop {
+        display: flex;
+    }
+
+    &__left {
+        @include mixins.desktop {
+            display: flex;
+            flex-direction: column;
+            width: 85%;
+            border-right: 1px solid colors.$mercury;
+            padding-bottom: 3rem;
+        }
+    }
+
+    &__right {
+        @include mixins.desktop {
+            display: flex;
+        }
+    }
+}

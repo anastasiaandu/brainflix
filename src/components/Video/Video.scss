@@ -9,6 +9,11 @@
 
         @include mixins.tablet {
             width: 45%;
+            margin: 1.5rem 0;
+        }
+
+        @include mixins.desktop {
+            width: 100%;
         }
     }
 

@@ -2,15 +2,23 @@
 @use '../../styles/partials/mixins';
 
 .comments {
-    margin: 0 1rem 1rem 1rem;
+    margin: 0 1rem;
 
     @include mixins.tablet {
-        margin: 0 2.25rem 2.25rem 2.25rem;
+        margin: 0 2.25rem;
+    }
+
+    @include mixins.desktop {
+        margin: 0 0 0 8rem;
     }
 
     &__total {
         font-size: 0.8rem;
         font-weight: 700;
         margin: 1.5rem 0;
+
+        @include mixins.tablet {
+            padding-right: 1.5rem;
+        }
     }
 }

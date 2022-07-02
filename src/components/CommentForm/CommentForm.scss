@@ -5,7 +5,6 @@
 .comments {
     &__section {
         display: flex;
-        border-bottom: 1px solid colors.$mercury;
     }
 
     &__avatar {
@@ -26,6 +25,10 @@
 
         @include mixins.tablet {
             padding-bottom: 2rem;
+        }
+
+        @include mixins.desktop {
+            padding-right: 1.5rem;
         }
     }
 

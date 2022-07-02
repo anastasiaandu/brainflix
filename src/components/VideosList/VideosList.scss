@@ -9,15 +9,25 @@
         margin: 0 2.25rem 2.25rem 2.25rem;
     }
 
+    @include mixins.desktop {
+        margin: 0 8rem 0 1.5rem;
+    }
+
     &__heading {
         text-transform: uppercase;
         font-size: 0.75rem;
         font-weight: 700;
         color: colors.$silver;
-        margin: 1rem 0;
+        margin: 0;
+        padding-top: 1rem;
+        border-top: 1px solid colors.$mercury;
 
         @include mixins.tablet {
-            margin: 2rem 0;
+            padding-top: 2rem;
+        }
+
+        @include mixins.desktop {
+            border-top: none;
         }
     }
 

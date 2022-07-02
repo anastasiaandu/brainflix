@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import videos from '../../data/videos.json';
 import videoDetails from '../../data/video-details.json';
+import './Main.scss';
 import Hero from "../Hero/Hero";
 import Article from "../Article/Article";
 import CommentsList from "../CommentsList/CommentsList";
@@ -32,11 +33,17 @@ class Main extends Component {
         return (
             <main>
                 <Hero video={selectedVideo}/>
-                <Article videoDetail={selectedVideo}/>
-                <CommentsList videoDetail={selectedVideo}/>
-                <VideosList videoDetails={unselectedVideos} 
-                            onVideoChange={this.changeActiveVideo}
-                />
+                <section className='body'>
+                    <section className='body__left'>
+                        <Article videoDetail={selectedVideo}/>
+                        <CommentsList videoDetail={selectedVideo}/>
+                    </section>
+                    <section className='body__right'>
+                        <VideosList videoDetails={unselectedVideos} 
+                                    onVideoChange={this.changeActiveVideo}
+                        />
+                    </section>
+                </section>
             </main>
         );
     }

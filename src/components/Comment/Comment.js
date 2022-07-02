@@ -28,8 +28,8 @@ const Comment = ({ name, comment, timestamp }) => {
     return (
         <div className='comments__old'>
             <img src='' alt='' className='comments__avatar-new'/>
-            <div>
-                <div className='comments__container'>
+            <div className='comments__container'>
+                <div className='comments__info'>
                     <p className='comments__name'>
                         {name}
                     </p>
@@ -37,7 +37,7 @@ const Comment = ({ name, comment, timestamp }) => {
                         {date}
                     </p>
                 </div>
-                <div>
+                <div className='comments__comment'>
                     {comment}
                 </div>
             </div>
