@@ -15,7 +15,11 @@
         @include mixins.tablet {
             width: 2.75rem;
             height: 2.75rem;
-            margin-right: 1.5rem;
+            margin-right: 1.2rem;
+        }
+
+        @include mixins.desktop {
+            margin-right: 2rem;
         }
     }
 
@@ -73,6 +77,10 @@
             min-width: 10rem;
             height: 2.5rem;
             margin-left: 1.5rem;
+        }
+
+        @include mixins.desktop {
+            min-width: 9.5rem;
         }
     }
 }

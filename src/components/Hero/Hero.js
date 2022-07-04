@@ -1,4 +1,5 @@
-import './Hero.scss'
+import './Hero.scss';
+
 
 const Hero = ({ video }) => {
     return (

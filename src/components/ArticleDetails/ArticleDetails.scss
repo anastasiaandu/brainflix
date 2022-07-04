@@ -38,7 +38,7 @@
         font-weight: 700;
 
         @include mixins.tablet {
-            margin-right: 2rem;
+            margin-right: 0.5rem;
         }
     }
     
@@ -50,7 +50,7 @@
         display: flex;
 
         @include mixins.tablet {
-            margin-right: 2rem;
+            margin-right: 1.5rem;
         }
     }
     

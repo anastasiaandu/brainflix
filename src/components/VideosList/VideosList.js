@@ -1,6 +1,7 @@
 import './VideosList.scss';
 import Video from '../Video/Video';
 
+
 const VideosList = ({ videoDetails, onVideoChange }) => {
     return (
         <section className='videos'>

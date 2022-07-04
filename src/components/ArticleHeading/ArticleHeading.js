@@ -1,5 +1,6 @@
 import './ArticleHeading.scss';
 
+
 const ArticleHeading = ({ videoDetail }) => {
     return (
         <div className='article__heading'>

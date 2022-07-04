@@ -1,6 +1,7 @@
 @use '../../styles/partials/colors';
 @use '../../styles/partials/mixins';
 
+
 .comments {
     &__old {
         display: flex;
@@ -29,7 +30,11 @@
         @include mixins.tablet {
             min-width: 2.75rem;
             height: 2.75rem;
-            margin-right: 1.5rem;
+            margin-right: 1.2rem;
+        }
+
+        @include mixins.desktop {
+            margin-right: 2rem;
         }
     }
 
@@ -39,20 +44,16 @@
 
     &__info {
         display: flex;
-        justify-content: space-between;
     }
 
     &__name {
         font-weight: 700;
         margin-top: 0;
+        margin-right: 0.5rem;
     }
 
     &__date {
         color: colors.$silver;
         margin-top: 0;
     }
-
-    // &__comment {
-    //     width: 100%;  
-    // }
 }

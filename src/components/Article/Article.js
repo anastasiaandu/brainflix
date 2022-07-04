@@ -3,6 +3,7 @@ import ArticleHeading from "../ArticleHeading/ArticleHeading";
 import ArticleDetails from '../ArticleDetails/ArticleDetails';
 import ArticleBody from '../ArticleBody/ArticleBody';
 
+
 const Article = ({ videoDetail }) => {
     return (
         <section className='article'>

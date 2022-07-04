@@ -1,6 +1,7 @@
 @use '../../styles/partials/colors';
 @use '../../styles/partials/mixins';
 
+
 .article {
     &__video-title {
         @include mixins.mobile-heading;

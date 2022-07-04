@@ -1,6 +1,7 @@
 import './CommentForm.scss';
 import profilePicture from '../../assets/images/Mohan-muruge.jpg';
 
+
 const CommentForm = () => {
     return (
         <div className='comments__section'>

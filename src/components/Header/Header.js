@@ -3,6 +3,7 @@ import logoImage from '../../assets/images/BrainFlix-logo.svg';
 import SearchForm from '../SearchForm/SearchForm';
 import UploadButton from '../UploadButton/UploadButton';
 
+
 const Header = () => {
     return (
         <header className='header'>
