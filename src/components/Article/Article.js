@@ -5,7 +5,6 @@ import ArticleBody from '../ArticleBody/ArticleBody';
 
 
 const Article = ({ video }) => {
-    console.log(video)
     return (
         <section className='article'>
             <ArticleHeading video={video} />

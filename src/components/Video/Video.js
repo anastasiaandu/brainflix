@@ -2,26 +2,26 @@ import './Video.scss';
 import { Link } from 'react-router-dom';
 
 
-const Video = ({ video, onVideoChange }) => {
+const Video = ({ video }) => {
 
-    const clickHandler = (event) => {
-        event.preventDefault();
-        onVideoChange(video.id);
-    };
+    // const clickHandler = (event) => {
+    //     event.preventDefault();
+    //     onVideoChange(video.id);
+    // };
 
     return (
-            <Link to={`/${video.id}`} onClick={clickHandler} key={video.id} className='videos__next'>
-                <img src={video.image} alt='/' className='videos__thumbnail' />
-                <div className='videos__info'>
-                    <p className='videos__title'>
-                        {video.title}
-                    </p>
-                    <p className='videos__channel'>
-                        {video.channel}
-                    </p>
-                </div>
-            </Link>
-            );   
+        <Link to={`/${video.id}`} className='videos__next'>
+            <img src={video.image} alt='/' className='videos__thumbnail' />
+            <div className='videos__info'>
+                <p className='videos__title'>
+                    {video.title}
+                </p>
+                <p className='videos__channel'>
+                    {video.channel}
+                </p>
+            </div>
+        </Link>
+    );   
 }
 
 export default Video;

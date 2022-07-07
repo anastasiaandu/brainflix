@@ -10,7 +10,7 @@ function App() {
       <Header />
       <Switch>
         <Route path='/' exact component={Main} />
-        <Route />
+        {/* <Route /> */}
         <Route path='/:videoId' component={Main} />
       </Switch>
     </Router>

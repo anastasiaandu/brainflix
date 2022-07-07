@@ -29,19 +29,16 @@ class Main extends Component {
             });
     }
 
-
     componentDidMount() {
         axios
             .get(`${apiUrl}${apiKey}`) 
             .then((response) => {
-                // console.log(response.data)
                 this.setState({
                     videos: response.data
                 })
 
                 const videoId = this.props.match.params.id || this.state.videos[0].id;
                 this.changeActiveVideo(videoId);
-
             })
             .catch((error) => {
                 // console.log(error);
@@ -71,7 +68,7 @@ class Main extends Component {
                     </section>
                     <section className='body__right'>
                         <VideosList videos={unselectedVideos} 
-                                    onVideoChange={this.changeActiveVideo}
+                                    // onVideoChange={this.changeActiveVideo}
                         />
                     </section>
                 </section>
