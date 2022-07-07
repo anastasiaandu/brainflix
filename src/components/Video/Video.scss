@@ -6,6 +6,8 @@
     &__next {
         display: flex;
         margin: 1rem 0;
+        text-decoration: none;
+        color: colors.$brainflix-darkblack;
 
         @include mixins.tablet {
             width: 45%;

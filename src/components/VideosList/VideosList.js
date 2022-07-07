@@ -2,7 +2,7 @@ import './VideosList.scss';
 import Video from '../Video/Video';
 
 
-const VideosList = ({ videoDetails, onVideoChange }) => {
+const VideosList = ({ videos, onVideoChange }) => {
     return (
         <section className='videos'>
             <p className='videos__heading'>
@@ -10,14 +10,15 @@ const VideosList = ({ videoDetails, onVideoChange }) => {
             </p>
             <ul className='videos__all'>
                 {
-                    videoDetails.map((video) => {
+                    videos.map((video) => {
                         return <Video 
                                     key={video.id}
-                                    title={video.title}
-                                    channel={video.channel}
-                                    image={video.image}
-                                    id={video.id}
+                                    video={video}
                                     onVideoChange={onVideoChange}
+                                    // title={video.title}
+                                    // channel={video.channel}
+                                    // image={video.image}
+                                    // id={video.id}
                                 />
                     })
                 }

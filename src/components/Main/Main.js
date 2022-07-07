@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import videos from '../../data/videos.json';
-import videoDetails from '../../data/video-details.json';
+import axios from 'axios';
+import { apiUrl } from '../../utils/urlUtils';
+import { apiKey } from '../../utils/urlUtils';
 import './Main.scss';
 import Hero from "../Hero/Hero";
 import Article from "../Article/Article";
@@ -11,35 +12,65 @@ import VideosList from "../VideosList/VideosList";
 class Main extends Component {
 
     state = {
-              activeVideo: videoDetails[0],
-              videos: videos,
-              videoDetails: videoDetails
+                videos: [],
+                selectedVideo: null
             }
-          
+
     changeActiveVideo = (id) => {
-        this.setState({
-            activeVideo: videoDetails.find((video) => {
-                return video.id === id
+        axios
+            .get(`${apiUrl}${id}${apiKey}`)
+            .then((response) => {
+                this.setState({
+                    selectedVideo: response.data
+                });
             })
-        });
+            .catch((error) => {
+                // console.log(error);
+            });
+    }
+
+
+    componentDidMount() {
+        axios
+            .get(`${apiUrl}${apiKey}`) 
+            .then((response) => {
+                // console.log(response.data)
+                this.setState({
+                    videos: response.data
+                })
+
+                const videoId = this.props.match.params.id || this.state.videos[0].id;
+                this.changeActiveVideo(videoId);
+
+            })
+            .catch((error) => {
+                // console.log(error);
+            });
     }
 
     render() {
-        const unselectedVideos = this.state.videos.filter((video) => {
-            return video.id !== this.state.activeVideo.id
-        })
-        const selectedVideo = this.state.activeVideo;
 
+        if(!this.state.selectedVideo) {
+            return (
+                <p>Loading...</p>
+            );
+        } 
+
+        const unselectedVideos = this.state.videos.filter((video) => {
+            return video.id !== this.state.selectedVideo.id
+        })
+        const selectedVideo = this.state.selectedVideo;
+        
         return (
             <main>
                 <Hero video={selectedVideo}/>
                 <section className='body'>
                     <section className='body__left'>
-                        <Article videoDetail={selectedVideo}/>
-                        <CommentsList videoDetail={selectedVideo}/>
+                        <Article video={selectedVideo}/>
+                        <CommentsList video={selectedVideo}/>
                     </section>
                     <section className='body__right'>
-                        <VideosList videoDetails={unselectedVideos} 
+                        <VideosList videos={unselectedVideos} 
                                     onVideoChange={this.changeActiveVideo}
                         />
                     </section>

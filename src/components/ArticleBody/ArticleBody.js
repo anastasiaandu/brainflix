@@ -1,11 +1,11 @@
 import './ArticleBody.scss';
 
 
-const ArticleBody = ({ videoDetail }) => {
+const ArticleBody = ({ video }) => {
     return (
         <div className='article__video-description'>
             <p>
-                {videoDetail.description}
+                {video.description}
             </p>
         </div>
     );
