@@ -10,8 +10,8 @@ function App() {
       <Header />
       <Switch>
         <Route path='/' exact component={Main} />
-        {/* <Route /> */}
         <Route path='/:videoId' component={Main} />
+        <Route />
       </Switch>
     </Router>
   );

@@ -13,7 +13,8 @@ class Main extends Component {
 
     state = {
                 videos: [],
-                selectedVideo: null
+                selectedVideo: null,
+                isError: false
             }
 
     changeActiveVideo = (id) => {
@@ -24,8 +25,10 @@ class Main extends Component {
                     selectedVideo: response.data
                 });
             })
-            .catch((error) => {
-                // console.log(error);
+            .catch(() => {
+                this.setState({
+                    isError: true
+                });
             });
     }
 
@@ -37,12 +40,24 @@ class Main extends Component {
                     videos: response.data
                 })
 
-                const videoId = this.props.match.params.id || this.state.videos[0].id;
+                const videoId = this.props.match.params.videoId || response.data[0].id;
                 this.changeActiveVideo(videoId);
             })
-            .catch((error) => {
-                // console.log(error);
+            .catch(() => {
+                this.setState({
+                    isError: true
+                });
             });
+    }
+
+    componentDidUpdate(prevProps) {
+        const previousProps = prevProps.match.params.videoId;
+        const newProps = this.props.match.params.videoId;
+
+        if (previousProps !== newProps) {
+            const videoId = newProps;
+            this.changeActiveVideo(videoId);
+        }
     }
 
     render() {
@@ -68,7 +83,7 @@ class Main extends Component {
                     </section>
                     <section className='body__right'>
                         <VideosList videos={unselectedVideos} 
-                                    // onVideoChange={this.changeActiveVideo}
+                                    // onVideoChange={this.changeActiveVideo} 
                         />
                     </section>
                 </section>
