@@ -3,7 +3,7 @@
 
 
 .hero {
-    background-color: colors.$brainflix-darkblack;
+    background-color: colors.$secondary-color-darker;
 
     @include mixins.tablet {
         display: flex;

@@ -4,15 +4,15 @@ import CommentForm from '../CommentForm/CommentForm';
 import Comment from '../Comment/Comment';
 
 
-const CommentsList = ({ video }) => {
+const CommentsList = ({ videoComments }) => {
     return (
         <section className='comments'>
             <p className='comments__total'>
-                {video.comments.length} Comments
+                {videoComments.length} Comments
             </p>
             <CommentForm />
             {
-                video.comments.map((comment) => {
+                videoComments.map((comment) => {
                     return <Comment key={uniqid()} name={comment.name} comment={comment.comment} timestamp={comment.timestamp} /> 
                 })
             }

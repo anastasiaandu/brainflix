@@ -1,13 +1,14 @@
-import './Header.scss';
+import { Link } from 'react-router-dom';
+import './PageHeader.scss';
 import logoImage from '../../assets/images/BrainFlix-logo.svg';
 import SearchForm from '../SearchForm/SearchForm';
 import UploadButton from '../UploadButton/UploadButton';
 
 
-const Header = () => {
+const PageHeader = () => {
     return (
         <header className='header'>
-            <img src={logoImage} alt="brainflix logo" className='header__logo' />
+            <Link to='/' className='header__logo'><img src={logoImage} alt="brainflix logo" /></Link>
             <nav className='header__nav'>
                 <SearchForm />
                 <UploadButton />
@@ -16,4 +17,4 @@ const Header = () => {
     );
 };
 
-export default Header;
+export default PageHeader;

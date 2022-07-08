@@ -7,7 +7,7 @@
         display: flex;
     }
 
-    &__left {
+    &__main-video {
         @include mixins.desktop {
             display: flex;
             flex-direction: column;
@@ -17,7 +17,7 @@
         }
     }
 
-    &__right {
+    &__next-videos {
         @include mixins.desktop {
             display: flex;
         }

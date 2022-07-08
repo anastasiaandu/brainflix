@@ -1,10 +1,10 @@
 import './Hero.scss';
 
 
-const Hero = ({ video }) => {
+const Hero = ({ videoImage }) => {
     return (
         <section className='hero'>
-            <video poster={video.image} controls className='hero__video'></video>
+            <video poster={videoImage} controls className='hero__video'></video>
         </section>
     );
 };

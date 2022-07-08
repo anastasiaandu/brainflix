@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { apiUrl } from '../../utils/urlUtils';
 import { apiKey } from '../../utils/urlUtils';
-import './Main.scss';
+import './HomePage.scss';
 import Hero from "../Hero/Hero";
-import Article from "../Article/Article";
+import VideoDetails from "../VideoDetails/VideoDetails";
 import CommentsList from "../CommentsList/CommentsList";
 import VideosList from "../VideosList/VideosList";
 
 
-class Main extends Component {
+class HomePage extends Component {
 
     state = {
                 videos: [],
@@ -51,13 +51,15 @@ class Main extends Component {
     }
 
     componentDidUpdate(prevProps) {
+
         const previousProps = prevProps.match.params.videoId;
         const newProps = this.props.match.params.videoId;
 
         if (previousProps !== newProps) {
-            const videoId = newProps;
+            const videoId = newProps || this.state.videos[0].id;
             this.changeActiveVideo(videoId);
         }
+
     }
 
     render() {
@@ -75,13 +77,13 @@ class Main extends Component {
         
         return (
             <main>
-                <Hero video={selectedVideo}/>
+                <Hero videoImage={selectedVideo.image}/>
                 <section className='body'>
-                    <section className='body__left'>
-                        <Article video={selectedVideo}/>
-                        <CommentsList video={selectedVideo}/>
+                    <section className='body__main-video'>
+                        <VideoDetails video={selectedVideo}/>
+                        <CommentsList videoComments={selectedVideo.comments}/>
                     </section>
-                    <section className='body__right'>
+                    <section className='body__next-videos'>
                         <VideosList videos={unselectedVideos} 
                                     // onVideoChange={this.changeActiveVideo} 
                         />
@@ -92,4 +94,4 @@ class Main extends Component {
     }
 }
 
-export default Main;
+export default HomePage;

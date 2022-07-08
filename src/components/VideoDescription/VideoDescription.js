@@ -1,7 +1,7 @@
-import './ArticleBody.scss';
+import './VideoDescription.scss';
 
 
-const ArticleBody = ({ video }) => {
+const VideoDescription = ({ video }) => {
     return (
         <div className='article__video-description'>
             <p>
@@ -11,4 +11,4 @@ const ArticleBody = ({ video }) => {
     );
 };
 
-export default ArticleBody;
+export default VideoDescription;

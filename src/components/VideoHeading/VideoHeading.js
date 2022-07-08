@@ -1,7 +1,7 @@
-import './ArticleHeading.scss';
+import './VideoHeading.scss';
 
 
-const ArticleHeading = ({ video }) => {
+const VideoHeading = ({ video }) => {
     return (
         <div className='article__heading'>
             <h1 className='article__video-title'>
@@ -11,4 +11,4 @@ const ArticleHeading = ({ video }) => {
     );
 };
 
-export default ArticleHeading;
+export default VideoHeading;

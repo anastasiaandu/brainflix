@@ -7,7 +7,7 @@
         display: flex;
         margin: 1rem 0;
         text-decoration: none;
-        color: colors.$brainflix-darkblack;
+        color: colors.$secondary-color-darker;
 
         @include mixins.tablet {
             width: 45%;

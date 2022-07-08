@@ -1,10 +1,10 @@
-import './ArticleDetails.scss';
+import './VideoInformation.scss';
 import { formatDate } from '../../utils/dateUtils';
 import viewsIcon from '../../assets/images/views.svg';
 import likesIcon from '../../assets/images/likes.svg';
 
 
-const ArticleDetails = ({ video }) => {
+const VideoInformation = ({ video }) => {
 
     const videoDate = formatDate(video.timestamp);
 
@@ -36,4 +36,4 @@ const ArticleDetails = ({ video }) => {
     );
 };
 
-export default ArticleDetails;
+export default VideoInformation;
