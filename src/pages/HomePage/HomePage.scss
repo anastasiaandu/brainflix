@@ -7,6 +7,20 @@
         display: flex;
     }
 
+    &__error {
+        font-size: 2rem;
+        font-weight: 700;
+        padding-left: 1rem;
+
+        @include mixins.tablet {
+            padding-left: 2.25rem;
+        }
+
+        @include mixins.desktop {
+            padding-left: 8rem;
+        }
+    }
+
     &__main-video {
         @include mixins.desktop {
             display: flex;

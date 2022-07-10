@@ -1,0 +1,31 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
+
+.upload {
+    &__info {
+        @include mixins.tablet {
+            width: 50%;
+        }
+
+        @include mixins.desktop {
+            width: 48%;
+            height: 100%;
+        }
+    }
+
+    &__thumbnail-label {
+        @include mixins.upload-heading;
+    }
+
+    &__thumbnail {
+        width: 100%;
+        border-radius: 4px;
+        background-color: colors.$mercury;
+        margin-bottom: 1rem;
+
+        @include mixins.desktop {
+            margin-bottom: 1.2rem;
+        }
+    }
+}

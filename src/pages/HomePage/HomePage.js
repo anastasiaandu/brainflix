@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { apiUrl } from '../../utils/urlUtils';
-import { apiKey } from '../../utils/urlUtils';
+import { apiUrl } from '../../utils/apiUtils';
+import { apiKey } from '../../utils/apiUtils';
 import './HomePage.scss';
 import Hero from "../../components/Hero/Hero";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
@@ -53,10 +53,10 @@ class HomePage extends Component {
     componentDidUpdate(prevProps) {
 
         const previousProps = prevProps.match.params.videoId;
-        const newProps = this.props.match.params.videoId;
+        const newProps = this.props.match.params.videoId || this.state.videos[0].id;
 
         if (previousProps !== newProps) {
-            const videoId = newProps || this.state.videos[0].id;
+            const videoId = newProps;
             this.changeActiveVideo(videoId);
         }
     }
@@ -64,10 +64,12 @@ class HomePage extends Component {
     render() {
 
         if(!this.state.selectedVideo) {
-            return (
-                <p>Loading...</p>
-            );
+            return <p className='body__error'>Loading...</p>;
         } 
+
+        if(!this.state.selectedVideo && !this.state.isError) {
+            return <p className='body__error'>There's a problem with the network. Please try again later...</p>;
+        }
 
         const unselectedVideos = this.state.videos.filter((video) => {
             return video.id !== this.state.selectedVideo.id

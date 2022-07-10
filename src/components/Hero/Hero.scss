@@ -13,13 +13,17 @@
     
     &__video {
         width: 100%;
+        height: 11.25rem;
+        object-fit: cover;
         
         @include mixins.tablet {
             width: 90%;
+            height: 24.25rem;
         }
 
         @include mixins.desktop {
             width: 65%;
+            height: 29.25rem;
         }
     }
 }

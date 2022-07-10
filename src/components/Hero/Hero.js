@@ -1,6 +1,5 @@
 import './Hero.scss';
 
-
 const Hero = ({ videoImage }) => {
     return (
         <section className='hero'>

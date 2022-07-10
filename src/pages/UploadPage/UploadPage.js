@@ -1,7 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import './UploadPage.scss';
-import videoThumbnail from '../../assets/images/Upload-video-preview.jpg';
+import UploadThumbnail from '../../components/UploadThumbnail/UploadThumbnail';
+import UploadForm from '../../components/UploadForm/UploadForm';
+import UploadValidation from '../../components/UploadValidation/UploadValidation';
+import UploadButtons from '../../components/UploadButtons/UploadButtons';
+
 
 class UploadPage extends Component {
     state ={
@@ -13,7 +16,8 @@ class UploadPage extends Component {
 
     handleChange = (event) => { 
         this.setState({
-          [event.target.name]: event.target.value,
+            [event.target.name]: event.target.value,
+            isError: false
         });
     };
 
@@ -46,48 +50,20 @@ class UploadPage extends Component {
                     Upload Video
                 </h1>  
                 <div className='upload__container'>
-                    <div className='upload__info'>
-                        <p className='upload__thumbnail-label'>
-                            Video Thumbnail
-                        </p>
-                        <img src={videoThumbnail} alt='thumbnail of video to upload' className='upload__thumbnail'/>
-                    </div>
-                    <form className='upload__form'>
-                        <label htmlFor="upload-title" className="upload__title-label">Title your video</label>
-                        <input 
-                            type="text" 
-                            placeholder="Add a title to your video" 
-                            id="upload-title" 
-                            className={!this.state.isError ? "upload__title" : "upload__title upload__title--error"}
-                            name="uploadTitle" 
-                            value={this.state.uploadTitle}
-                            onChange={this.handleChange}
-                        />
-
-                        <label htmlFor="upload-description" className="upload__description-label">Add a video description</label>
-                        <textarea 
-                            type="text" 
-                            placeholder="Add a description to your video" 
-                            id="upload-description" 
-                            className={!this.state.isError ? "upload__description" : "upload__description upload__description--error"} 
-                            name="uploadDescription" 
-                            value={this.state.uploadDescription}
-                            onChange={this.handleChange}
-                        />
-
-                        <span className='upload__validation-before'>{this.state.isSuccess && `Upload successful!`}</span>
-                        <span className='upload__validation-before upload__validation-before--error'>{this.state.isError && 'Please check that you have completed all fields'}</span>
-
-                    </form>
+                    <UploadThumbnail />
+                    <UploadForm 
+                        onChange={this.handleChange} 
+                        titleValue={this.state.uploadTitle}
+                        descriptionValue={this.state.uploadDescription}
+                        onFocus={this.state.isFocused}
+                        onError={this.state.isError}
+                    />
                 </div>
-                <div className="upload__buttons">
-                    <button type="submit" className="upload__publish" onClick={this.handleSubmit} >Publish</button>
-                    <Link to='/' className="upload__cancel">Cancel</Link>
-                </div>
-
-                <span className='upload__validation-after'>{this.state.isSuccess && `Upload successful!`}</span>
-                <span className='upload__validation-after upload__validation-after--error'>{this.state.isError && 'Please check that you have completed all fields'}</span>
-                
+                <UploadValidation 
+                    onError={this.state.isError}
+                    onSuccess={this.state.isSuccess}
+                />
+                <UploadButtons onClick={this.handleSubmit}/>
             </main>
         );
     }

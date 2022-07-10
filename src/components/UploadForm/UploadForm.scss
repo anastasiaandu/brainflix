@@ -1,0 +1,78 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
+
+.upload {
+    &__form {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+
+        @include mixins.desktop {
+            margin-left: 1.5rem;
+        }
+    }
+
+    &__title-label {
+        @include mixins.upload-heading;
+    }
+
+    &__title {
+        @include mixins.input;
+        padding: 0.625rem;
+        margin-bottom: 1.2rem;
+
+        @include mixins.desktop {
+            margin-bottom: 1.75rem;
+        }
+
+        &::placeholder {
+            color: colors.$secondary-color-darker;
+            
+            @include mixins.tablet {
+                font-size: 0.9rem;
+            }
+        }
+
+        &--error {
+            border: 2px solid colors.$error-color;
+        }
+
+        &--focus {
+            border: 2px solid colors.$primary-color;
+        }
+    }
+
+    &__description-label {
+        @include mixins.upload-heading;
+    }
+
+    &__description {
+        @include mixins.input;
+        padding: 0.625rem 0.625rem 2rem 0.625rem;
+
+        @include mixins.tablet {
+            margin-bottom: 1.5rem;
+        }
+
+        @include mixins.desktop {
+            height: 100%;
+        }
+
+        &::placeholder {
+            color: colors.$secondary-color-darker;
+            
+            @include mixins.tablet {
+                font-size: 0.9rem;
+            }
+        }
+
+        &--error {
+            border: 2px solid colors.$error-color;
+        }
+
+        &--focus {
+            border: 2px solid colors.$primary-color;
+        }
+    }
+}

@@ -13,6 +13,7 @@ function App() {
         <Route path='/' exact component={HomePage} />
         <Route path='/upload' component={UploadPage}/>
         <Route path='/:videoId' component={HomePage} />
+        <Route component={HomePage} />
       </Switch>
     </Router>
   );

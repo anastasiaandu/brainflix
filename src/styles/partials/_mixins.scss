@@ -19,6 +19,11 @@
     background-color: colors.$alabaster;
     margin-bottom: 1rem;
     resize: none;
+    outline: none;
+
+    &:focus {
+        border: 2px solid colors.$primary-color;
+    }
 }
 
 @mixin button {
@@ -33,6 +38,10 @@
     background-repeat: no-repeat;
     background-position: 5% center;
     background-size: 1.35rem;
+
+    &:hover {
+        background-color: colors.$primary-color-darker;
+    }
 }
 
 @mixin avatar{

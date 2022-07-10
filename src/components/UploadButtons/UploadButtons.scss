@@ -1,0 +1,38 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
+
+.upload {
+    &__buttons {
+        display: flex;
+        flex-direction: column;
+
+        @include mixins.tablet {
+            flex-direction: row-reverse;
+            align-items: center;
+            border-top: 1px solid colors.$mercury;
+        }
+    }
+
+    &__publish {
+        @include mixins.button;
+        margin: 0.5rem 0;
+        background-image: url('../../assets/images/publish.svg');
+
+        @include mixins.tablet {
+            width: 10rem;
+            height: 2.5rem;
+            margin-left: 4rem;
+        } 
+    }
+
+    &__cancel {
+        text-decoration: none;
+        text-transform: uppercase;
+        text-align: center;
+        color: colors.$primary-color;;
+        margin: 2rem 0;
+        font-size: 0.75rem;
+        font-weight: 700;
+    }
+}

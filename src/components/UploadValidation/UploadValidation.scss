@@ -1,0 +1,18 @@
+@use '../../styles/partials/colors';
+@use '../../styles/partials/mixins';
+
+
+.upload {
+    &__validation {
+        font-size: 1rem;
+        font-weight: 700;
+
+        &--error {
+            color: colors.$error-color;
+        } 
+
+        &--success {
+            color: colors.$success-color;
+        }
+    }
+}
