@@ -1,8 +1,8 @@
 import './App.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom/cjs/react-router-dom.min';
 import PageHeader from './components/PageHeader/PageHeader';
-import HomePage from './components/HomePage/HomePage';
-import UploadPage from './components/UploadPage/UploadPage';
+import HomePage from '../src/pages/HomePage/HomePage';
+import UploadPage from '../src/pages/UploadPage/UploadPage';
 
 
 function App() {
@@ -11,8 +11,8 @@ function App() {
       <PageHeader />
       <Switch>
         <Route path='/' exact component={HomePage} />
-        <Route path='/:videoId' component={HomePage} />
         <Route path='/upload' component={UploadPage}/>
+        <Route path='/:videoId' component={HomePage} />
       </Switch>
     </Router>
   );

@@ -27,7 +27,7 @@
         &::placeholder {
             color: colors.$secondary-color-darker;
             font-family: 'Avenir Next';
-            font-size: 0.8rem;
+            font-size: 0.75rem;
         }
 
         @include mixins.tablet {

@@ -4,11 +4,6 @@ import { Link } from 'react-router-dom';
 
 const Video = ({ video }) => {
 
-    // const clickHandler = (event) => {
-    //     event.preventDefault();
-    //     onVideoChange(video.id);
-    // };
-
     return (
         <Link to={`/${video.id}`} className='videos__next'>
             <img src={video.image} alt='/' className='videos__thumbnail' />

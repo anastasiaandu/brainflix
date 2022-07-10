@@ -12,7 +12,7 @@ const CommentForm = () => {
                 </p>
                 <form className='comments__form'>
                     <label htmlFor="user-comment" className="comments__label"></label>
-                    <input type="text" placeholder="Add a new comment" id="user-comment" className="comments__input" name="comment" />
+                    <textarea type="text" placeholder="Add a new comment" id="user-comment" className="comments__input" name="comment" />
 
                     <button type="submit" className="comments__button">Comment</button>
                 </form>

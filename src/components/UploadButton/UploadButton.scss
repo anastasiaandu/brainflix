@@ -2,9 +2,6 @@
 @use '../../styles/partials/mixins';
 
 .upload {
-    &__button {
-        width: 100%;
-    }
 
     &__button-link {
         @include mixins.button;
@@ -15,6 +12,10 @@
             width: 10rem;
             height: 2.5rem;
             margin-left: 1.5rem;
+        }
+
+        @include mixins.desktop {
+            width: 9rem;
         }
     }
     

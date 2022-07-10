@@ -3,10 +3,10 @@ import axios from 'axios';
 import { apiUrl } from '../../utils/urlUtils';
 import { apiKey } from '../../utils/urlUtils';
 import './HomePage.scss';
-import Hero from "../Hero/Hero";
-import VideoDetails from "../VideoDetails/VideoDetails";
-import CommentsList from "../CommentsList/CommentsList";
-import VideosList from "../VideosList/VideosList";
+import Hero from "../../components/Hero/Hero";
+import VideoDetails from "../../components/VideoDetails/VideoDetails";
+import CommentsList from "../../components/CommentsList/CommentsList";
+import VideosList from "../../components/VideosList/VideosList";
 
 
 class HomePage extends Component {
@@ -59,7 +59,6 @@ class HomePage extends Component {
             const videoId = newProps || this.state.videos[0].id;
             this.changeActiveVideo(videoId);
         }
-
     }
 
     render() {
@@ -84,9 +83,7 @@ class HomePage extends Component {
                         <CommentsList videoComments={selectedVideo.comments}/>
                     </section>
                     <section className='body__next-videos'>
-                        <VideosList videos={unselectedVideos} 
-                                    // onVideoChange={this.changeActiveVideo} 
-                        />
+                        <VideosList videos={unselectedVideos}/>
                     </section>
                 </section>
             </main>

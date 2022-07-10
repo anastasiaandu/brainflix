@@ -14,12 +14,7 @@ const VideosList = ({ videos }) => {
                         return <Video 
                                     key={video.id}
                                     video={video}
-                                    // onVideoChange={onVideoChange}
-                                    // title={video.title}
-                                    // channel={video.channel}
-                                    // image={video.image}
-                                    // id={video.id}
-                                />
+            />
                     })
                 }
             </ul>

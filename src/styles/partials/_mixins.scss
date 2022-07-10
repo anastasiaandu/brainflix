@@ -14,7 +14,6 @@
 
 @mixin input {
     font-family: 'Avenir Next';
-    font-weight: 500;
     border: 1px solid colors.$mercury;
     border-radius: 4px;
     background-color: colors.$alabaster;
@@ -42,6 +41,14 @@
     object-fit: cover;
     border-radius: 50%;
     background-color: colors.$mercury;
+}
+
+@mixin upload-heading {
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: colors.$silver;
+    margin: 0 0 0.25rem 0;
 }
 
 @mixin tablet {
