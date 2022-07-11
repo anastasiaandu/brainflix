@@ -4,16 +4,28 @@ import CommentForm from '../CommentForm/CommentForm';
 import Comment from '../Comment/Comment';
 
 
-const CommentsList = ({ videoComments }) => {
+const CommentsList = ({ videoComments, commentValue, onError, onClick, onChange, onDelete }) => {
     return (
         <section className='comments'>
             <p className='comments__total'>
                 {videoComments.length} Comments
             </p>
-            <CommentForm />
+            <CommentForm 
+                commentValue={commentValue}
+                onError={onError}
+                onClick={onClick}
+                onChange={onChange}
+            />
             {
                 videoComments.map((comment) => {
-                    return <Comment key={uniqid()} name={comment.name} comment={comment.comment} timestamp={comment.timestamp} /> 
+                    return <Comment 
+                                key={uniqid()} 
+                                id={comment.id}
+                                name={comment.name} 
+                                comment={comment.comment} 
+                                timestamp={comment.timestamp} 
+                                onDelete={onDelete}
+                            /> 
                 })
             }
         </section>

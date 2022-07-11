@@ -4,15 +4,21 @@
 
 .upload {
     &__validation {
-        font-size: 1rem;
+        font-size: 0.9rem;
         font-weight: 700;
+
+        &--success {
+            text-decoration: none;
+            color: colors.$success-color;
+        }
 
         &--error {
             color: colors.$error-color;
         } 
 
-        &--success {
-            color: colors.$success-color;
-        }
+    }
+
+    &__redirect {
+        text-decoration: none;
     }
 }

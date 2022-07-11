@@ -14,8 +14,94 @@ class HomePage extends Component {
     state = {
                 videos: [],
                 selectedVideo: null,
-                isError: false
+                newCommentAuthor: 'Anastasia',
+                newCommentContent: '',
+                isError: false,
+                isSuccess: false
             }
+
+    handleChange = (event) => { 
+        this.setState({
+            [event.target.name]: event.target.value,
+            isError: false
+        });
+    };
+
+    isFormValid = () => {
+        if (!this.state.newCommentAuthor || !this.state.newCommentContent) {
+            return false;
+        }
+        return true;
+    };
+
+    handlePost = (event) => {
+        event.preventDefault();
+
+        const videoId = this.props.match.params.videoId || this.state.videos[0].id;
+
+        if (!this.isFormValid()) {
+            this.setState({
+                isError: true
+            });
+            return;
+        }
+        this.setState({
+            isError: false,
+            isSuccess: true
+        });
+        
+        axios 
+            .post(`${apiUrl}${videoId}/comments${apiKey}`, {
+                name: this.state.newCommentAuthor,
+                comment: this.state.newCommentContent
+            })
+            .then(() => {
+                return axios.get(`${apiUrl}${apiKey}`)
+            })
+            .then((response) => {
+                console.log(response)
+
+                this.setState({
+                    videos: response.data
+                })
+
+                const videoId = this.props.match.params.videoId || response.data[0].id;
+                this.changeActiveVideo(videoId);
+            })
+            .catch(() => {
+                this.setState({
+                    isError: true
+                });
+            });
+
+            this.setState({
+                newCommentAuthor: "",
+                newCommentContent: "",
+            });
+    }
+
+    handleDelete = (event, id) => {
+
+        event.preventDefault();
+
+        const videoId = this.props.match.params.videoId || this.state.videos[0].id;
+
+        axios 
+            .delete(`${apiUrl}${videoId}/comments/${id}${apiKey}`)
+            .then(() => {
+                return axios.get(`${apiUrl}${apiKey}`)
+            })
+            .then((response) => {
+                console.log(response)
+
+                this.setState({
+                    videos: response.data
+                })
+
+                const videoId = this.props.match.params.videoId || response.data[0].id;
+                this.changeActiveVideo(videoId);
+            })
+    }
 
     changeActiveVideo = (id) => {
         axios
@@ -82,7 +168,14 @@ class HomePage extends Component {
                 <section className='body'>
                     <section className='body__main-video'>
                         <VideoDetails video={selectedVideo}/>
-                        <CommentsList videoComments={selectedVideo.comments}/>
+                        <CommentsList 
+                            videoComments={selectedVideo.comments}
+                            commentValue={this.state.newCommentContent}
+                            onChange={this.handleChange}
+                            onError={this.state.isError}
+                            onClick={this.handlePost}
+                            onDelete={this.handleDelete}
+                        />
                     </section>
                     <section className='body__next-videos'>
                         <VideosList videos={unselectedVideos}/>

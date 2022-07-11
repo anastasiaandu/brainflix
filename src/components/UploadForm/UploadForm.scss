@@ -37,10 +37,6 @@
         &--error {
             border: 2px solid colors.$error-color;
         }
-
-        &--focus {
-            border: 2px solid colors.$primary-color;
-        }
     }
 
     &__description-label {
@@ -69,10 +65,6 @@
 
         &--error {
             border: 2px solid colors.$error-color;
-        }
-
-        &--focus {
-            border: 2px solid colors.$primary-color;
         }
     }
 }

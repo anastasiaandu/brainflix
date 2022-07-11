@@ -56,4 +56,11 @@
         color: colors.$silver;
         margin-top: 0;
     }
+
+    &__delete-button {
+        @include mixins.button;
+        font-size: 0.75rem;
+        padding: 0.35rem 0.75rem;
+        margin-top: 0.5rem;
+    }
 }

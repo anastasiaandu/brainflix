@@ -67,6 +67,10 @@
             color: colors.$secondary-color-darker;
             font-family: 'Avenir Next';
         }
+
+        &--error {
+            border: 2px solid colors.$error-color;
+        }
     }
 
     &__button {
@@ -82,5 +86,16 @@
         @include mixins.desktop {
             min-width: 9.5rem;
         }
+    }
+
+    &__validation {
+        font-size: 0.9rem;
+        font-weight: 700;
+        margin-top: 0.5rem;
+
+        &--error {
+            color: colors.$error-color;
+        } 
+
     }
 }

@@ -7,7 +7,7 @@ import UploadButtons from '../../components/UploadButtons/UploadButtons';
 
 
 class UploadPage extends Component {
-    state ={
+    state = {
         uploadTitle: '',
         uploadDescription: '',
         isError: false,
@@ -55,7 +55,6 @@ class UploadPage extends Component {
                         onChange={this.handleChange} 
                         titleValue={this.state.uploadTitle}
                         descriptionValue={this.state.uploadDescription}
-                        onFocus={this.state.isFocused}
                         onError={this.state.isError}
                     />
                 </div>

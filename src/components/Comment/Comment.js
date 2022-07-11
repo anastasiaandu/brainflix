@@ -1,7 +1,7 @@
 import './Comment.scss';
 import { formatDate } from '../../utils/dateUtils';
 
-const Comment = ({ name, comment, timestamp }) => {
+const Comment = ({ id, name, comment, timestamp, onDelete }) => {
 
     const date = formatDate(timestamp);
 
@@ -20,6 +20,13 @@ const Comment = ({ name, comment, timestamp }) => {
                 <div className='comments__comment'>
                     {comment}
                 </div>
+                <button 
+                    type="submit" 
+                    className="comments__delete-button" 
+                    onClick={() => {
+                        onDelete(id);
+                    }
+                    }>Delete</button>
             </div>
          </div>
     );
