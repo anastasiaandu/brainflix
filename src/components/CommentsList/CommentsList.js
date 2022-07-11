@@ -4,7 +4,7 @@ import CommentForm from '../CommentForm/CommentForm';
 import Comment from '../Comment/Comment';
 
 
-const CommentsList = ({ videoComments, commentValue, onError, onClick, onChange, onDelete }) => {
+const CommentsList = ({ videoComments, commentValue, onError, onChange, onClick, onDelete }) => {
     return (
         <section className='comments'>
             <p className='comments__total'>

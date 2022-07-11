@@ -5,6 +5,10 @@ const Comment = ({ id, name, comment, timestamp, onDelete }) => {
 
     const date = formatDate(timestamp);
 
+    const handleClick = (id) => {
+        onDelete(id);
+    }
+
     return (
         <div className='comments__old'>
             <img src='' alt='' className='comments__avatar-new'/>
@@ -23,10 +27,10 @@ const Comment = ({ id, name, comment, timestamp, onDelete }) => {
                 <button 
                     type="submit" 
                     className="comments__delete-button" 
-                    onClick={() => {
-                        onDelete(id);
-                    }
-                    }>Delete</button>
+                    onClick={handleClick}
+                >
+                    Delete
+                </button>
             </div>
          </div>
     );

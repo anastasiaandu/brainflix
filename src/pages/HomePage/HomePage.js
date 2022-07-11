@@ -171,8 +171,8 @@ class HomePage extends Component {
                         <CommentsList 
                             videoComments={selectedVideo.comments}
                             commentValue={this.state.newCommentContent}
-                            onChange={this.handleChange}
                             onError={this.state.isError}
+                            onChange={this.handleChange}
                             onClick={this.handlePost}
                             onDelete={this.handleDelete}
                         />
