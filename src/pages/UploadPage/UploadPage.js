@@ -41,6 +41,8 @@ class UploadPage extends Component {
             isError: false,
             isSuccess: true
         });
+
+        window.location = '/';
     }
 
     render() {

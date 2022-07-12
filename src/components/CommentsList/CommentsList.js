@@ -20,7 +20,7 @@ const CommentsList = ({ videoComments, commentValue, onError, onChange, onClick,
                 videoComments.map((comment) => {
                     return <Comment 
                                 key={uniqid()} 
-                                id={comment.id}
+                                id={uniqid()}
                                 name={comment.name} 
                                 comment={comment.comment} 
                                 timestamp={comment.timestamp} 

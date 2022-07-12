@@ -5,7 +5,8 @@ const Comment = ({ id, name, comment, timestamp, onDelete }) => {
 
     const date = formatDate(timestamp);
 
-    const handleClick = (id) => {
+    const handleClick = (event) => {
+        event.preventDefault();
         onDelete(id);
     }
 

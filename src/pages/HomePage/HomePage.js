@@ -75,31 +75,24 @@ class HomePage extends Component {
             });
 
             this.setState({
-                newCommentAuthor: "",
-                newCommentContent: "",
+                newCommentContent: ""
             });
     }
 
-    handleDelete = (event, id) => {
-
-        event.preventDefault();
+    handleDelete = (id) => {
 
         const videoId = this.props.match.params.videoId || this.state.videos[0].id;
+        const commentId = id;
+
+        console.log(videoId)
+        console.log(id)
+
+        // `${apiUrl}${videoId}/comments/${commentId}/${apiKey}`
 
         axios 
-            .delete(`${apiUrl}${videoId}/comments/${id}${apiKey}`)
-            .then(() => {
-                return axios.get(`${apiUrl}${apiKey}`)
-            })
+            .delete(`https://project-2-api.herokuapp.com/videos/${videoId}/comments/${commentId}/?api_key=8bb46c1b-b8e2-4667-b86e-2c79c96560d8`)
             .then((response) => {
-                console.log(response)
-
-                this.setState({
-                    videos: response.data
-                })
-
-                const videoId = this.props.match.params.videoId || response.data[0].id;
-                this.changeActiveVideo(videoId);
+                console.log('after delete: ', response)
             })
     }
 
