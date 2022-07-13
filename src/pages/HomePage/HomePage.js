@@ -34,6 +34,18 @@ class HomePage extends Component {
         return true;
     };
 
+    // title: this.state.videoTitle,
+    // channel: 'Scene One',
+    // image: 'http://localhost:8080/images/Upload-video-preview.jpg',
+    // description: this.state.videoDescription,
+    // views: '12,400,600',
+    // likes: '24,000',
+    // duration: '5:03',
+    // video:'https://project-2-api.herokuapp.com/stream',
+    // timestamp: Date.now(),
+    // comments: []
+
+
     handlePost = (event) => {
         event.preventDefault();
 

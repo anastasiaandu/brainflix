@@ -42,7 +42,7 @@ class UploadPage extends Component {
             isSuccess: true
         });
 
-        window.location = '/';
+        // window.location = '/';
     }
 
     render() {
