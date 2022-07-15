@@ -1,5 +1,5 @@
 import './UploadThumbnail.scss';
-import videoThumbnail from '../../assets/images/Upload-video-preview.jpg';
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
 const UploadThumbnail = () => {
@@ -8,7 +8,7 @@ const UploadThumbnail = () => {
             <p className='upload__thumbnail-label'>
                 Video Thumbnail
             </p>
-            <img src={videoThumbnail} alt='thumbnail of video to upload' className='upload__thumbnail'/>
+            <img src={`${SERVER_URL}/images/Upload-video-preview.jpg`} alt='thumbnail of video to upload' className='upload__thumbnail'/>
         </div>
     );
 };

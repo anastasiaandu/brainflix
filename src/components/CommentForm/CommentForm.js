@@ -1,11 +1,11 @@
 import './CommentForm.scss';
-import profilePicture from '../../assets/images/Mohan-muruge.jpg';
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
 const CommentForm = ({ onError, commentValue, onChange, onClick }) => {
     return (
         <div className='comments__section'>
-            <img src={profilePicture} alt='user avatar' className='comments__avatar'/>
+            <img src={`${SERVER_URL}/images/Mohan-muruge.jpg`} alt='user avatar' className='comments__avatar'/>
             <div className='comments__new'>
                 <p className='comments__heading'>
                     Join The Conversation
@@ -17,7 +17,7 @@ const CommentForm = ({ onError, commentValue, onChange, onClick }) => {
                         placeholder="Add a new comment" 
                         id="user-comment" 
                         className={!onError ? "comments__input" : "comments__input comments__input--error"}
-                        name="newCommentContent" 
+                        name="newComment" 
                         value={commentValue}
                         onChange={onChange}
                     />

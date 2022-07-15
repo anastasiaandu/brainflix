@@ -1,9 +1,13 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './UploadPage.scss';
 import UploadThumbnail from '../../components/UploadThumbnail/UploadThumbnail';
 import UploadForm from '../../components/UploadForm/UploadForm';
 import UploadValidation from '../../components/UploadValidation/UploadValidation';
 import UploadButtons from '../../components/UploadButtons/UploadButtons';
+
+
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 
 class UploadPage extends Component {
@@ -42,7 +46,28 @@ class UploadPage extends Component {
             isSuccess: true
         });
 
-        // window.location = '/';
+        axios
+            .post(`${SERVER_URL}/videos`, {
+                title: this.state.uploadTitle,
+                description: this.state.uploadDescription
+            }) 
+            .then((response) => {
+                console.log(response)
+            })
+            .catch(() => {
+                this.setState({
+                    isError: true
+                });
+            });
+
+        this.setState({
+            uploadTitle: '',
+            uploadDescription: ''
+        });
+
+        setTimeout(() => {
+            this.props.history.push('/');
+        }, 2000)
     }
 
     render() {

@@ -6,7 +6,7 @@
     &__button-link {
         @include mixins.button;
         width: 100%;
-        background-image: url('../../assets/images/upload.svg');
+        background-image: url('http://localhost:8080/images/upload.svg');
 
         @include mixins.tablet {
             width: 10rem;

@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { apiUrl } from '../../utils/apiUtils';
-import { apiKey } from '../../utils/apiUtils';
 import './HomePage.scss';
 import Hero from "../../components/Hero/Hero";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
 import CommentsList from "../../components/CommentsList/CommentsList";
 import VideosList from "../../components/VideosList/VideosList";
-
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 class HomePage extends Component {
 
     state = {
                 videos: [],
                 selectedVideo: null,
-                newCommentAuthor: 'Anastasia',
-                newCommentContent: '',
+                newComment: '',
                 isError: false,
                 isSuccess: false
             }
+
 
     handleChange = (event) => { 
         this.setState({
@@ -27,26 +25,16 @@ class HomePage extends Component {
         });
     };
 
+
     isFormValid = () => {
-        if (!this.state.newCommentAuthor || !this.state.newCommentContent) {
+        if (!this.state.newComment) {
             return false;
         }
         return true;
     };
 
-    // title: this.state.videoTitle,
-    // channel: 'Scene One',
-    // image: 'http://localhost:8080/images/Upload-video-preview.jpg',
-    // description: this.state.videoDescription,
-    // views: '12,400,600',
-    // likes: '24,000',
-    // duration: '5:03',
-    // video:'https://project-2-api.herokuapp.com/stream',
-    // timestamp: Date.now(),
-    // comments: []
 
-
-    handlePost = (event) => {
+    handleCommentPost = (event) => {
         event.preventDefault();
 
         const videoId = this.props.match.params.videoId || this.state.videos[0].id;
@@ -59,16 +47,77 @@ class HomePage extends Component {
         }
         this.setState({
             isError: false,
-            isSuccess: true
+            // isSuccess: true
         });
         
         axios 
-            .post(`${apiUrl}${videoId}/comments${apiKey}`, {
-                name: this.state.newCommentAuthor,
-                comment: this.state.newCommentContent
+            .post(`${SERVER_URL}/videos/${videoId}/comments`, {
+                comment: this.state.newComment
             })
+            .then((response) => {
+                console.log(response)
+                return axios.get(`${SERVER_URL}/videos`)
+            })
+            .then((response) => {
+                console.log(response)
+
+                this.setState({
+                    videos: response.data,
+                    newComment: ''
+                })
+
+                const videoId = this.props.match.params.videoId || response.data[0].id;
+                this.changeActiveVideo(videoId);
+            })
+            .catch((error) => {
+                console.log(error)
+                this.setState({
+                    isError: true
+                });
+            });
+
+            this.setState({
+                newComment: ''
+            });
+    }
+
+
+    handleCommentDelete = () => {
+
+        const videoId = this.props.match.params.videoId || this.state.videos[0].id;
+
+        console.log(videoId)
+
+        // axios 
+        //     .delete(`${SERVER_URL}/videos/${videoId}/comments/${commentId}`)
+        //     .then((response) => {
+        //         console.log('after delete: ', response)
+        //     })
+    }
+
+
+    handleCommentLike = () => {
+
+        const videoId = this.props.match.params.videoId || this.state.videos[0].id;
+
+        console.log(videoId)
+
+        axios 
+            .put(`${SERVER_URL}/videos/${videoId}/comments/:commentId/likes`)
+            .then((response) => {
+                console.log('after like: ', response)
+            })
+    }
+
+
+    handleVideoLike = () => {
+
+        const videoId = this.props.match.params.videoId || this.state.videos[0].id;
+
+        axios 
+            .put(`${SERVER_URL}/videos/${videoId}/likes`)
             .then(() => {
-                return axios.get(`${apiUrl}${apiKey}`)
+                return axios.get(`${SERVER_URL}/videos`)
             })
             .then((response) => {
                 console.log(response)
@@ -80,37 +129,18 @@ class HomePage extends Component {
                 const videoId = this.props.match.params.videoId || response.data[0].id;
                 this.changeActiveVideo(videoId);
             })
-            .catch(() => {
+            .catch((error) => {
+                console.log(error)
                 this.setState({
                     isError: true
                 });
             });
-
-            this.setState({
-                newCommentContent: ""
-            });
     }
 
-    handleDelete = (id) => {
-
-        const videoId = this.props.match.params.videoId || this.state.videos[0].id;
-        const commentId = id;
-
-        console.log(videoId)
-        console.log(id)
-
-        // `${apiUrl}${videoId}/comments/${commentId}/${apiKey}`
-
-        axios 
-            .delete(`https://project-2-api.herokuapp.com/videos/${videoId}/comments/${commentId}/?api_key=8bb46c1b-b8e2-4667-b86e-2c79c96560d8`)
-            .then((response) => {
-                console.log('after delete: ', response)
-            })
-    }
 
     changeActiveVideo = (id) => {
         axios
-            .get(`${apiUrl}${id}${apiKey}`)
+            .get(`${SERVER_URL}/videos/${id}`)
             .then((response) => {
                 this.setState({
                     selectedVideo: response.data
@@ -125,7 +155,7 @@ class HomePage extends Component {
 
     componentDidMount() {
         axios
-            .get(`${apiUrl}${apiKey}`) 
+            .get(`${SERVER_URL}/videos`) 
             .then((response) => {
                 this.setState({
                     videos: response.data
@@ -172,14 +202,18 @@ class HomePage extends Component {
                 <Hero videoImage={selectedVideo.image}/>
                 <section className='body'>
                     <section className='body__main-video'>
-                        <VideoDetails video={selectedVideo}/>
+                        <VideoDetails 
+                            video={selectedVideo}
+                            onLike={this.handleVideoLike}
+                        />
                         <CommentsList 
                             videoComments={selectedVideo.comments}
                             commentValue={this.state.newCommentContent}
                             onError={this.state.isError}
                             onChange={this.handleChange}
-                            onClick={this.handlePost}
-                            onDelete={this.handleDelete}
+                            onClick={this.handleCommentPost}
+                            onDelete={this.handleCommentDelete}
+                            onLike={this.handleCommentLike}
                         />
                     </section>
                     <section className='body__next-videos'>

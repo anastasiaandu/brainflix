@@ -4,7 +4,7 @@ import CommentForm from '../CommentForm/CommentForm';
 import Comment from '../Comment/Comment';
 
 
-const CommentsList = ({ videoComments, commentValue, onError, onChange, onClick, onDelete }) => {
+const CommentsList = ({ videoComments, commentValue, onError, onChange, onClick, onDelete, onLike }) => {
     return (
         <section className='comments'>
             <p className='comments__total'>
@@ -20,11 +20,12 @@ const CommentsList = ({ videoComments, commentValue, onError, onChange, onClick,
                 videoComments.map((comment) => {
                     return <Comment 
                                 key={uniqid()} 
-                                id={uniqid()}
                                 name={comment.name} 
                                 comment={comment.comment} 
+                                likes={comment.likes}
                                 timestamp={comment.timestamp} 
                                 onDelete={onDelete}
+                                onLike={onLike}
                             /> 
                 })
             }

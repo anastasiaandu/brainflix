@@ -1,13 +1,21 @@
+// import uniqid from 'uniqid';
 import './Comment.scss';
 import { formatDate } from '../../utils/dateUtils';
 
-const Comment = ({ id, name, comment, timestamp, onDelete }) => {
+const Comment = ({ id, name, comment, likes, timestamp, onDelete, onLike }) => {
 
     const date = formatDate(timestamp);
 
-    const handleClick = (event) => {
+    // {uniqid()}
+
+    const handleDelete = (event) => {
         event.preventDefault();
         onDelete(id);
+    }
+
+    const handleLike = (event) => {
+        event.preventDefault();
+        onLike(id);
     }
 
     return (
@@ -27,8 +35,15 @@ const Comment = ({ id, name, comment, timestamp, onDelete }) => {
                 </div>
                 <button 
                     type="submit" 
+                    className="comments__like-button" 
+                    onClick={handleLike}
+                >
+                    {`${likes} ${likes === 1 ? 'Like' : 'Likes'}`}
+                </button>
+                <button 
+                    type="submit" 
                     className="comments__delete-button" 
-                    onClick={handleClick}
+                    onClick={handleDelete}
                 >
                     Delete
                 </button>

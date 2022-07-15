@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import './UploadButton.scss';
-import profilePicture from '../../assets/images/Mohan-muruge.jpg';
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 
 const UploadButton = () => {
     return (
@@ -10,7 +11,7 @@ const UploadButton = () => {
                     Upload
                 </button>
             </Link>
-            <img src={profilePicture} alt='user avatar' className='upload__avatar'/>
+            <img src={`${SERVER_URL}/images/Mohan-muruge.jpg`} alt='user avatar' className='upload__avatar'/>
         </>
     );
 };

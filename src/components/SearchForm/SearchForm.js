@@ -1,5 +1,6 @@
 import './SearchForm.scss';
-import profilePicture from '../../assets/images/Mohan-muruge.jpg';
+const SERVER_URL = process.env.REACT_APP_SERVER_URL;
+
 
 const SearchForm = () => {
     return (
@@ -9,7 +10,7 @@ const SearchForm = () => {
                     <input className='search__input' id='search' type='text' name='search' placeholder='Search'/>
                 </label>
             </form>
-            <img src={profilePicture} alt='user avatar' className='search__avatar'/>
+            <img src={`${SERVER_URL}/images/Mohan-muruge.jpg`} alt='user avatar' className='search__avatar'/>
         </div>
     );
 };

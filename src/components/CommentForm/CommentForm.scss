@@ -75,7 +75,7 @@
 
     &__button {
         @include mixins.button;
-        background-image: url('../../assets/images/add_comment.svg');
+        background-image: url('http://localhost:8080/images/add_comment.svg');
 
         @include mixins.tablet {
             min-width: 10rem;
