@@ -1,21 +1,18 @@
-// import uniqid from 'uniqid';
 import './Comment.scss';
 import { formatDate } from '../../utils/dateUtils';
 
-const Comment = ({ id, name, comment, likes, timestamp, onDelete, onLike }) => {
+const Comment = ({ name, comment, likes, timestamp, onDelete, onLike }) => {
 
     const date = formatDate(timestamp);
 
-    // {uniqid()}
-
     const handleDelete = (event) => {
         event.preventDefault();
-        onDelete(id);
+        onDelete(timestamp);
     }
 
     const handleLike = (event) => {
         event.preventDefault();
-        onLike(id);
+        onLike(timestamp);
     }
 
     return (

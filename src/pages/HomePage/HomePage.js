@@ -47,7 +47,7 @@ class HomePage extends Component {
         }
         this.setState({
             isError: false,
-            // isSuccess: true
+            isSuccess: true
         });
         
         axios 
@@ -63,7 +63,6 @@ class HomePage extends Component {
 
                 this.setState({
                     videos: response.data,
-                    newComment: ''
                 })
 
                 const videoId = this.props.match.params.videoId || response.data[0].id;
@@ -82,31 +81,67 @@ class HomePage extends Component {
     }
 
 
-    handleCommentDelete = () => {
-
-        const videoId = this.props.match.params.videoId || this.state.videos[0].id;
-
-        console.log(videoId)
-
-        // axios 
-        //     .delete(`${SERVER_URL}/videos/${videoId}/comments/${commentId}`)
-        //     .then((response) => {
-        //         console.log('after delete: ', response)
-        //     })
-    }
-
-
-    handleCommentLike = () => {
+    handleCommentDelete = (timestamp) => {
 
         const videoId = this.props.match.params.videoId || this.state.videos[0].id;
 
         console.log(videoId)
 
         axios 
-            .put(`${SERVER_URL}/videos/${videoId}/comments/:commentId/likes`)
-            .then((response) => {
-                console.log('after like: ', response)
+            .delete(`${SERVER_URL}/videos/${videoId}/comments/:commentId`, {
+                data: {timestamp: timestamp}
             })
+            .then((response) => {
+                console.log(response)
+                return axios.get(`${SERVER_URL}/videos`)
+            })
+            .then((response) => {
+                console.log(response)
+
+                this.setState({
+                    videos: response.data,
+                })
+
+                const videoId = this.props.match.params.videoId || response.data[0].id;
+                this.changeActiveVideo(videoId);
+            })
+            .catch((error) => {
+                console.log(error)
+                this.setState({
+                    isError: true
+                });
+            });
+    }
+
+
+    handleCommentLike = (timestamp) => {
+
+        const videoId = this.props.match.params.videoId || this.state.videos[0].id;
+
+        axios 
+            .put(`${SERVER_URL}/videos/${videoId}/comments/:commentId/likes`, {
+                timestamp: timestamp
+            })
+            .then((response) => {
+                console.log(response)
+                return axios.get(`${SERVER_URL}/videos`)
+            })
+            .then((response) => {
+                console.log(response)
+
+                this.setState({
+                    videos: response.data,
+                })
+
+                const videoId = this.props.match.params.videoId || response.data[0].id;
+                this.changeActiveVideo(videoId);
+            })
+            .catch((error) => {
+                console.log(error)
+                this.setState({
+                    isError: true
+                });
+            });
     }
 
 
