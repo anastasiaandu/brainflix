@@ -5,6 +5,7 @@ import Hero from "../../components/Hero/Hero";
 import VideoDetails from "../../components/VideoDetails/VideoDetails";
 import CommentsList from "../../components/CommentsList/CommentsList";
 import VideosList from "../../components/VideosList/VideosList";
+
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
 
 class HomePage extends Component {
@@ -14,10 +15,10 @@ class HomePage extends Component {
                 selectedVideo: null,
                 newComment: '',
                 isError: false,
-                isSuccess: false
+                isAxiosError: false
             }
 
-
+    //function to handle comment input change
     handleChange = (event) => { 
         this.setState({
             [event.target.name]: event.target.value,
@@ -25,7 +26,7 @@ class HomePage extends Component {
         });
     };
 
-
+    //function to check if comment input is valid
     isFormValid = () => {
         if (!this.state.newComment) {
             return false;
@@ -33,7 +34,7 @@ class HomePage extends Component {
         return true;
     };
 
-
+    //function to post new comment
     handleCommentPost = (event) => {
         event.preventDefault();
 
@@ -45,34 +46,13 @@ class HomePage extends Component {
             });
             return;
         }
-        this.setState({
-            isError: false,
-            isSuccess: true
-        });
         
         axios 
             .post(`${SERVER_URL}/videos/${videoId}/comments`, {
                 comment: this.state.newComment
             })
-            .then((response) => {
-                console.log(response)
-                return axios.get(`${SERVER_URL}/videos`)
-            })
-            .then((response) => {
-                console.log(response)
-
-                this.setState({
-                    videos: response.data,
-                })
-
-                const videoId = this.props.match.params.videoId || response.data[0].id;
-                this.changeActiveVideo(videoId);
-            })
-            .catch((error) => {
-                console.log(error)
-                this.setState({
-                    isError: true
-                });
+            .then(() => {
+                this.updatePage();
             });
 
             this.setState({
@@ -80,40 +60,21 @@ class HomePage extends Component {
             });
     }
 
-
+    //function to delete comment
     handleCommentDelete = (timestamp) => {
 
         const videoId = this.props.match.params.videoId || this.state.videos[0].id;
-
-        console.log(videoId)
 
         axios 
             .delete(`${SERVER_URL}/videos/${videoId}/comments/:commentId`, {
                 data: {timestamp: timestamp}
             })
-            .then((response) => {
-                console.log(response)
-                return axios.get(`${SERVER_URL}/videos`)
+            .then(() => {
+                this.updatePage();
             })
-            .then((response) => {
-                console.log(response)
-
-                this.setState({
-                    videos: response.data,
-                })
-
-                const videoId = this.props.match.params.videoId || response.data[0].id;
-                this.changeActiveVideo(videoId);
-            })
-            .catch((error) => {
-                console.log(error)
-                this.setState({
-                    isError: true
-                });
-            });
     }
 
-
+    //function to like comment
     handleCommentLike = (timestamp) => {
 
         const videoId = this.props.match.params.videoId || this.state.videos[0].id;
@@ -122,29 +83,12 @@ class HomePage extends Component {
             .put(`${SERVER_URL}/videos/${videoId}/comments/:commentId/likes`, {
                 timestamp: timestamp
             })
-            .then((response) => {
-                console.log(response)
-                return axios.get(`${SERVER_URL}/videos`)
+            .then(() => {
+                this.updatePage();
             })
-            .then((response) => {
-                console.log(response)
-
-                this.setState({
-                    videos: response.data,
-                })
-
-                const videoId = this.props.match.params.videoId || response.data[0].id;
-                this.changeActiveVideo(videoId);
-            })
-            .catch((error) => {
-                console.log(error)
-                this.setState({
-                    isError: true
-                });
-            });
     }
 
-
+    //function to like video
     handleVideoLike = () => {
 
         const videoId = this.props.match.params.videoId || this.state.videos[0].id;
@@ -152,43 +96,17 @@ class HomePage extends Component {
         axios 
             .put(`${SERVER_URL}/videos/${videoId}/likes`)
             .then(() => {
-                return axios.get(`${SERVER_URL}/videos`)
+                this.updatePage();
             })
-            .then((response) => {
-                console.log(response)
-
-                this.setState({
-                    videos: response.data
-                })
-
-                const videoId = this.props.match.params.videoId || response.data[0].id;
-                this.changeActiveVideo(videoId);
-            })
-            .catch((error) => {
-                console.log(error)
-                this.setState({
-                    isError: true
-                });
-            });
     }
 
-
-    changeActiveVideo = (id) => {
-        axios
-            .get(`${SERVER_URL}/videos/${id}`)
-            .then((response) => {
-                this.setState({
-                    selectedVideo: response.data
-                });
-            })
-            .catch(() => {
-                this.setState({
-                    isError: true
-                });
-            });
+    //function to redirect home from 404 page
+    handleClick = () => {
+        window.location = '/';
     }
 
-    componentDidMount() {
+    //function to update page
+    updatePage = () => {
         axios
             .get(`${SERVER_URL}/videos`) 
             .then((response) => {
@@ -201,30 +119,60 @@ class HomePage extends Component {
             })
             .catch(() => {
                 this.setState({
-                    isError: true
+                    isAxiosError: true
                 });
             });
     }
 
-    componentDidUpdate(prevProps) {
+    //function to change selected video
+    changeActiveVideo = (id) => {
+        axios
+            .get(`${SERVER_URL}/videos/${id}`)
+            .then((response) => {
+                this.setState({
+                    selectedVideo: response.data
+                });
+            })
+            .catch(() => {
+                this.setState({
+                    isAxiosError: true
+                });
+            });
+    }
 
-        const previousProps = prevProps.match.params.videoId;
-        const newProps = this.props.match.params.videoId || this.state.videos[0].id;
+    componentDidMount() {
+        this.updatePage();
+    }
+
+    componentDidUpdate(prevProps) {
+        let previousProps = prevProps.match.params.videoId || this.state.videos[0].id;
+        let newProps = this.props.match.params.videoId || this.state.videos[0].id;
+
+        if(!previousProps) { 
+            return;
+        }
 
         if (previousProps !== newProps) {
             const videoId = newProps;
+            window.scrollTo(0, 0);
             this.changeActiveVideo(videoId);
-        }
+        } 
     }
 
     render() {
 
-        if(!this.state.selectedVideo) {
+        if(!this.state.selectedVideo && !this.state.isAxiosError) {
             return <p className='body__error'>Loading...</p>;
-        } 
+        }
 
-        if(!this.state.selectedVideo && !this.state.isError) {
-            return <p className='body__error'>There's a problem with the network. Please try again later...</p>;
+        if(this.state.isAxiosError) {
+            return (
+                <div>
+                    <p className='body__error'>404...</p>
+                    <p className='body__error'>This page does not exist</p>
+                    <button className='body__error--button' onClick={this.handleClick}>Go Back Home</button>
+                </div>
+            );
         }
 
         const unselectedVideos = this.state.videos.filter((video) => {
@@ -243,7 +191,7 @@ class HomePage extends Component {
                         />
                         <CommentsList 
                             videoComments={selectedVideo.comments}
-                            commentValue={this.state.newCommentContent}
+                            commentValue={this.state.newComment}
                             onError={this.state.isError}
                             onChange={this.handleChange}
                             onClick={this.handleCommentPost}

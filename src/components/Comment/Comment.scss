@@ -59,18 +59,18 @@
 
     &__like-button {
         @include mixins.button;
-        font-size: 0.75rem;
-        padding: 0.35rem 0.75rem;
+        font-size: 0.7rem;
+        padding: 0.25rem;
         margin-top: 0.5rem;
         margin-right: 0.5rem;
-        width: 4.5rem;
+        width: 4rem;
     }
 
     &__delete-button {
         @include mixins.button;
-        font-size: 0.75rem;
-        padding: 0.35rem 0.75rem;
+        font-size: 0.7rem;
+        padding: 0.25rem;
         margin-top: 0.5rem;
-        width: 4.5rem;
+        width: 4rem;
     }
 }

@@ -6,9 +6,7 @@ import UploadForm from '../../components/UploadForm/UploadForm';
 import UploadValidation from '../../components/UploadValidation/UploadValidation';
 import UploadButtons from '../../components/UploadButtons/UploadButtons';
 
-
 const SERVER_URL = process.env.REACT_APP_SERVER_URL;
-
 
 class UploadPage extends Component {
     state = {
@@ -18,6 +16,7 @@ class UploadPage extends Component {
         isSuccess: false
     }
 
+    //function to handle comment input change
     handleChange = (event) => { 
         this.setState({
             [event.target.name]: event.target.value,
@@ -25,6 +24,7 @@ class UploadPage extends Component {
         });
     };
 
+    //function to check if comment input is valid
     isFormValid = () => {
         if (!this.state.uploadTitle || !this.state.uploadDescription) {
             return false;
@@ -32,6 +32,7 @@ class UploadPage extends Component {
         return true;
     };
 
+    //function to upload new video
     handleSubmit = (event) => {
         event.preventDefault();
     
@@ -41,18 +42,17 @@ class UploadPage extends Component {
             });
             return;
         }
-        this.setState({
-            isError: false,
-            isSuccess: true
-        });
-
+ 
         axios
             .post(`${SERVER_URL}/videos`, {
                 title: this.state.uploadTitle,
                 description: this.state.uploadDescription
             }) 
-            .then((response) => {
-                console.log(response)
+            .then(() => {
+                this.setState({
+                    isError: false,
+                    isSuccess: true
+                });
             })
             .catch(() => {
                 this.setState({
