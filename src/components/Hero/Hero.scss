@@ -5,11 +5,17 @@
 .hero {
     background-color: colors.$secondary-color-darker;
     position: relative;
+    height: 11.25rem;
 
     @include mixins.tablet {
         display: flex;
         justify-content: center;
         align-items: center;
+        height: 24.25rem;
+    }
+
+    @include mixins.desktop {
+        height: 29.25rem;
     }
     
     &__video {
@@ -33,57 +39,78 @@
         position: absolute;
         bottom: 0;
         display: flex;
-        justify-content: space-between;
         align-items: center;
-        border: 2px solid white;
+        padding: 0.5rem 1rem;
+
+        @include mixins.tablet {
+            width: 90%;
+        }
+
+        @include mixins.desktop {
+            width: 65%;
+        }
     }
 
     &__video-play-pause {
         display: flex;
+        justify-content: center;
         align-items: center;
+        width: 3rem;
+        height: 2rem;
+        background-color: colors.$secondary-color-darker;
+        margin-right: 0.5rem;
+        border-radius: 4px;
+    }
+
+    &__video-play {
+        width: 1rem;
+        position: absolute;
+        z-index: 5;
     }
 
     &__video-scrubber-slide {
         display: flex;
+        justify-content: center;
         align-items: center;
+        flex-grow: 1;
+        width: 9rem;
+        height: 2rem;
+        background-color: colors.$secondary-color-darker;
+        margin-right: 0.5rem;
+        border-radius: 4px;
     }
 
     &__video-slide {
         -webkit-appearance: none;
-        background: transparent;
+        appearance: none;
+        background: colors.$primary-color;
+        width: 7rem;
+        height: 0.25rem;
+        border-radius: 0.1rem;
+        margin: 0 1rem;
+        flex-grow: 1;
         cursor: pointer;
-        width: 100%;
-        overflow: hidden;
 
         ::-webkit-slider-runnable-track {
             -webkit-appearance: none;
-            // border: none;
-            // width: 100%;
-            // height: 0.5rem;
-            // background: colors.$primary-color;
-            // background-color: colors.$primary-color;
-            // color: colors.$primary-color;
-            // height: 1rem;
-            // border-radius: 0.5rem;
-            // margin-top: -0.5rem;
-            // cursor: pointer;
-
+            border: none;
             width: 100%;
-      height: 4.4px;
-      cursor: pointer;
-      box-shadow: 0.9px 0.9px 1.7px #002200, 0px 0px 0.9px #003c00;
-      background: #205928;
-      border-radius: 1px;
-      border: 1.1px solid #18d501;
-          
+            height: 0.5rem;
+            background: colors.$primary-color;
+            background-color: colors.$primary-color;
+            color: colors.$primary-color;
+            border-radius: 0.5rem;
+            margin-top: -0.5rem;
+            cursor: pointer;
         }
 
         &::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
-            width: 1rem;
-            height: 1rem;
+            width: 1.25rem;
+            height: 1.25rem;
             border: 0;
+            margin-top: 0.25rem;
             border-radius: 50%;
             background-image: url('http://localhost:8080/images/Icon-scrubber-control.svg');
             background-size: contain;
@@ -98,14 +125,16 @@
 
         &:focus::-webkit-slider-runnable-track {
             background: colors.$primary-color;
-            border: 1px solid #053a5f;
-            outline: 3px solid #053a5f;
-            outline-offset: 0.125rem;
         }
     }
 
     &__video-fullscreen-volume{
         display: flex;
+        justify-content: space-around;
         align-items: center;
+        width: 5rem;
+        height: 2rem;
+        background-color: colors.$secondary-color-darker;
+        border-radius: 4px;
     }
 }
