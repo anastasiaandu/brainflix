@@ -20,10 +20,15 @@
     &__logo {
         height: 1.45rem;
         margin: 0 auto;
+        transition: transform 0.3s;
 
         @include mixins.tablet {
             margin: 0;
             margin-right: 6.5rem;
+        }
+
+        &:hover {
+            transform: scale(1.2);
         }
     }
 

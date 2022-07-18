@@ -26,10 +26,15 @@
         object-fit: cover;
         margin-right: 1rem;
         background-color: colors.$mercury;
+        transition: transform 0.3s;
 
         @include mixins.tablet {
             min-width: 7rem;
             max-height: 4rem;
+        }
+
+        &:hover {
+            transform: scale(1.1);
         }
     }
 
